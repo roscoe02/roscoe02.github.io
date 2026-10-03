@@ -41,15 +41,23 @@ MODEL = "claude-haiku-4-5"
 LOCATION = "Dallas, TX"
 SEARCHES = [
     "entry level IT support",
+    "IT support specialist",
     "help desk technician",
+    "desktop support technician",
+    "service desk analyst",
+    "IT technician",
     "junior system administrator",
+    "NOC technician",
     "junior database administrator",
     "entry level SQL analyst",
-    "NOC technician",
+    "cloud support associate",
 ]
-MAX_DAYS_OLD = 7
-PER_SEARCH = 20
-MAX_POSTINGS = 80
+SENIOR_WORDS = ("senior", "sr.", "sr ", "lead", "manager", "principal", "architect", "director", "staff ", "iii")
+MAX_DAYS_OLD = 14
+SEARCH_RADIUS_KM = 60
+PER_SEARCH = 50
+MAX_POSTINGS = 120
+MIN_POSTINGS = 15
 TOP_N = 12
 
 EXTRACTION_SCHEMA = {
@@ -78,6 +86,7 @@ For each posting, list the concrete, teachable technical skills, tools, platform
 
 Rules:
 - Only list skills the posting actually mentions. Do not infer skills it doesn't state.
+- Prefer specific names over categories. If a posting says "networking protocols such as TCP/IP and DNS", list "TCP/IP" and "DNS", not "Networking protocols". Skip vague categories that name no specific skill ("operating systems", "computer skills", "technical aptitude").
 - Skip soft skills and generic traits (communication, teamwork, attention to detail) and degrees.
 - List each skill at most once per posting.
 - Return every posting id you were given, even if its skill list is empty."""
@@ -102,7 +111,7 @@ def fetch_postings() -> list[dict]:
                 "app_key": app_key,
                 "what": query,
                 "where": LOCATION,
-                "distance": 40,
+                "distance": SEARCH_RADIUS_KM,
                 "max_days_old": MAX_DAYS_OLD,
                 "results_per_page": PER_SEARCH,
                 "content-type": "application/json",
@@ -112,6 +121,9 @@ def fetch_postings() -> list[dict]:
         resp.raise_for_status()
         for job in resp.json().get("results", []):
             job_id = str(job.get("id"))
+            title = job.get("title", "")
+            if any(w in f" {title.lower()} " for w in SENIOR_WORDS):
+                continue
             if job_id and job_id not in seen:
                 seen[job_id] = {
                     "id": job_id,
@@ -119,7 +131,11 @@ def fetch_postings() -> list[dict]:
                     "company": (job.get("company") or {}).get("display_name", ""),
                     "description": job.get("description", ""),
                 }
-    return list(seen.values())[:MAX_POSTINGS]
+    postings = list(seen.values())[:MAX_POSTINGS]
+    print(f"Fetched {len(postings)} postings:")
+    for p in postings:
+        print(f"  - {p['title']} | {p['company']}")
+    return postings
 
 
 # ──────────────────────────────────────────────
@@ -208,7 +224,7 @@ def render_svg(radar: dict) -> str:
     marks = {"have": "✓", "learning": "◐", "gap": "○"}
 
     parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="Skills DFW entry-level IT employers asked for this week">',
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="Skills DFW entry-level IT employers are asking for">',
         "<style>",
         ".bg{fill:#ffffff}.t{fill:#17191c;font:600 15px -apple-system,Segoe UI,Helvetica,Arial,sans-serif}",
         ".s{fill:#5d636e;font:12px -apple-system,Segoe UI,Helvetica,Arial,sans-serif}",
@@ -218,8 +234,8 @@ def render_svg(radar: dict) -> str:
         "@media (prefers-color-scheme: dark){.bg{fill:#0d1117}.t,.l{fill:#e6edf3}.s{fill:#8b949e}.track{fill:#21262d}}",
         "</style>",
         f'<rect class="bg" width="{width}" height="{height}" rx="8"/>',
-        f'<text class="t" x="16" y="26">What DFW entry-level IT employers asked for this week</text>',
-        f'<text class="s" x="16" y="46">{radar["postings_analyzed"]} postings · updated {radar["updated"]} · ✓ I have it · ◐ learning · ○ not yet</text>',
+        f'<text class="t" x="16" y="26">Skills DFW entry-level IT employers are asking for</text>',
+        f'<text class="s" x="16" y="46">{radar["postings_analyzed"]} postings from the last {radar["window_days"]} days · updated {radar["updated"]} · ✓ I have it · ◐ learning · ○ not yet</text>',
     ]
     for i, row in enumerate(rows):
         y = top_pad + i * row_h
@@ -248,8 +264,8 @@ def main() -> None:
         skills_by_id = json.loads((FIXTURES / "extraction.json").read_text())
     else:
         postings = fetch_postings()
-        if not postings:
-            sys.exit("No postings returned; leaving the previous radar in place.")
+        if len(postings) < MIN_POSTINGS:
+            sys.exit(f"Only {len(postings)} postings found (need {MIN_POSTINGS}); leaving the previous radar in place.")
         skills_by_id = extract_skills(postings)
 
     radar = build_radar(postings, skills_by_id, profile)

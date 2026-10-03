@@ -1,8 +1,8 @@
 {
   "updated": "2026-10-03",
   "location": "Dallas–Fort Worth",
-  "postings_analyzed": 57,
-  "postings_fetched": 103,
+  "postings_analyzed": 12,
+  "postings_fetched": 53,
   "window_days": 14,
   "searches": [
     "entry level IT support",
@@ -19,64 +19,59 @@
   ],
   "top_skills": [
     {
-      "skill": "Structured cabling",
-      "postings": 32,
-      "percent": 56
-    },
-    {
       "skill": "Windows",
-      "postings": 11,
-      "percent": 19
-    },
-    {
-      "skill": "Hardware troubleshooting",
-      "postings": 7,
-      "percent": 12
-    },
-    {
-      "skill": "AWS",
-      "postings": 5,
-      "percent": 9
+      "postings": 8,
+      "percent": 67
     },
     {
       "skill": "Active Directory",
-      "postings": 4,
-      "percent": 7
-    },
-    {
-      "skill": "CompTIA A+",
       "postings": 3,
-      "percent": 5
+      "percent": 25
     },
     {
       "skill": "macOS",
       "postings": 3,
-      "percent": 5
-    },
-    {
-      "skill": "Ticketing systems",
-      "postings": 3,
-      "percent": 5
-    },
-    {
-      "skill": "Access control",
-      "postings": 2,
-      "percent": 4
+      "percent": 25
     },
     {
       "skill": "Google Workspace",
       "postings": 2,
-      "percent": 4
+      "percent": 17
     },
     {
-      "skill": "Slack",
+      "skill": "Hardware troubleshooting",
       "postings": 2,
-      "percent": 4
+      "percent": 17
     },
     {
-      "skill": "Surveillance systems",
-      "postings": 2,
-      "percent": 4
+      "skill": "AWS",
+      "postings": 1,
+      "percent": 8
+    },
+    {
+      "skill": "CMMC",
+      "postings": 1,
+      "percent": 8
+    },
+    {
+      "skill": "Group Policy",
+      "postings": 1,
+      "percent": 8
+    },
+    {
+      "skill": "Intune",
+      "postings": 1,
+      "percent": 8
+    },
+    {
+      "skill": "Microsoft Azure",
+      "postings": 1,
+      "percent": 8
+    },
+    {
+      "skill": "Ticketing systems",
+      "postings": 1,
+      "percent": 8
     }
   ]
 }

@@ -58,6 +58,7 @@ SEARCH_RADIUS_KM = 60
 PER_SEARCH = 50
 MAX_POSTINGS = 120
 MIN_POSTINGS = 15
+MAX_PER_COMPANY = 3  # keeps one employer posting dozens of copies from skewing the chart
 TOP_N = 12
 
 EXTRACTION_SCHEMA = {
@@ -134,7 +135,18 @@ def fetch_postings() -> list[dict]:
                     "company": (job.get("company") or {}).get("display_name", ""),
                     "description": job.get("description", ""),
                 }
-    postings = list(seen.values())[:MAX_POSTINGS]
+    per_company: Counter[str] = Counter()
+    titles_seen: set[tuple[str, str]] = set()
+    postings = []
+    for p in seen.values():
+        company = p["company"].strip().lower()
+        title_key = (company, p["title"].strip().lower())
+        if title_key in titles_seen or per_company[company] >= MAX_PER_COMPANY:
+            continue
+        titles_seen.add(title_key)
+        per_company[company] += 1
+        postings.append(p)
+    postings = postings[:MAX_POSTINGS]
     print(f"Fetched {len(postings)} postings:")
     for p in postings:
         print(f"  - {p['title']} | {p['company']}")

@@ -37,7 +37,7 @@ SVG_OUT = SITE / "radar.svg"
 PROFILE = HERE / "skills_profile.json"
 FIXTURES = HERE / "fixtures"
 
-MODEL = "claude-opus-5"
+MODEL = "claude-haiku-4-5"
 LOCATION = "Dallas, TX"
 SEARCHES = [
     "entry level IT support",
@@ -135,15 +135,10 @@ def extract_skills(postings: list[dict]) -> dict[str, list[str]]:
         ensure_ascii=False,
     )
 
-    response = client.beta.messages.create(
+    response = client.messages.create(
         model=MODEL,
         max_tokens=16000,
-        betas=["server-side-fallback-2026-07-01"],
-        fallbacks="default",
-        output_config={
-            "effort": "low",
-            "format": {"type": "json_schema", "schema": EXTRACTION_SCHEMA},
-        },
+        output_config={"format": {"type": "json_schema", "schema": EXTRACTION_SCHEMA}},
         system=EXTRACTION_INSTRUCTIONS,
         messages=[{"role": "user", "content": f"Postings (JSON):\n{payload}"}],
     )

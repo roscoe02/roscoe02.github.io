@@ -1,7 +1,7 @@
 {
   "updated": "2026-10-03",
   "location": "Dallas–Fort Worth",
-  "postings_analyzed": 17,
+  "postings_analyzed": 57,
   "postings_fetched": 103,
   "window_days": 14,
   "searches": [
@@ -19,77 +19,64 @@
   ],
   "top_skills": [
     {
+      "skill": "Structured cabling",
+      "postings": 32,
+      "percent": 56
+    },
+    {
       "skill": "Windows",
-      "postings": 9,
-      "percent": 53,
-      "status": "have"
+      "postings": 11,
+      "percent": 19
+    },
+    {
+      "skill": "Hardware troubleshooting",
+      "postings": 7,
+      "percent": 12
     },
     {
       "skill": "AWS",
       "postings": 5,
-      "percent": 29,
-      "status": "gap"
+      "percent": 9
     },
     {
       "skill": "Active Directory",
-      "postings": 3,
-      "percent": 18,
-      "status": "gap"
+      "postings": 4,
+      "percent": 7
     },
     {
-      "skill": "Hardware troubleshooting",
+      "skill": "CompTIA A+",
       "postings": 3,
-      "percent": 18,
-      "status": "gap"
+      "percent": 5
     },
     {
       "skill": "macOS",
       "postings": 3,
-      "percent": 18,
-      "status": "have"
+      "percent": 5
+    },
+    {
+      "skill": "Ticketing systems",
+      "postings": 3,
+      "percent": 5
+    },
+    {
+      "skill": "Access control",
+      "postings": 2,
+      "percent": 4
     },
     {
       "skill": "Google Workspace",
       "postings": 2,
-      "percent": 12,
-      "status": "gap"
+      "percent": 4
     },
     {
       "skill": "Slack",
       "postings": 2,
-      "percent": 12,
-      "status": "gap"
+      "percent": 4
     },
     {
-      "skill": "CompTIA A+",
-      "postings": 1,
-      "percent": 6,
-      "status": "gap"
-    },
-    {
-      "skill": "Intune",
-      "postings": 1,
-      "percent": 6,
-      "status": "gap"
-    },
-    {
-      "skill": "MDM",
-      "postings": 1,
-      "percent": 6,
-      "status": "gap"
-    },
-    {
-      "skill": "Microsoft Azure",
-      "postings": 1,
-      "percent": 6,
-      "status": "have"
-    },
-    {
-      "skill": "Network+",
-      "postings": 1,
-      "percent": 6,
-      "status": "gap"
+      "skill": "Surveillance systems",
+      "postings": 2,
+      "percent": 4
     }
-  ],
-  "have_count": 3
+  ]
 }

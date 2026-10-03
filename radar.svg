@@ -3,71 +3,58 @@
 .bg{fill:#ffffff}.t{fill:#17191c;font:600 15px -apple-system,Segoe UI,Helvetica,Arial,sans-serif}
 .s{fill:#5d636e;font:12px -apple-system,Segoe UI,Helvetica,Arial,sans-serif}
 .l{fill:#17191c;font:13px -apple-system,Segoe UI,Helvetica,Arial,sans-serif}
-.have{fill:#2f855a}.learning{fill:#b7791f}.gap{fill:#a0aec0}.track{fill:#edf0f4}
-.m-have{fill:#2f855a}.m-learning{fill:#b7791f}.m-gap{fill:#a0aec0}
-@media (prefers-color-scheme: dark){.bg{fill:#0d1117}.t,.l{fill:#e6edf3}.s{fill:#8b949e}.track{fill:#21262d}}
+.bar{fill:#3b6fd4}.track{fill:#edf0f4}
+@media (prefers-color-scheme: dark){.bg{fill:#0d1117}.t,.l{fill:#e6edf3}.s{fill:#8b949e}.track{fill:#21262d}.bar{fill:#6f9bff}}
 </style>
 <rect class="bg" width="560" height="406" rx="8"/>
 <text class="t" x="16" y="26">Skills DFW entry-level IT employers are asking for</text>
-<text class="s" x="16" y="46">17 relevant postings from the last 14 days · updated 2026-10-03 · ✓ I have it · ◐ learning · ○ not yet</text>
-<text class="l m-have" x="16" y="77">✓</text>
-<text class="l" x="34" y="77">Windows</text>
+<text class="s" x="16" y="46">57 relevant postings from the last 14 days · updated 2026-10-03</text>
+<text class="l" x="16" y="77">Structured cabling</text>
 <rect class="track" x="190" y="66" width="250" height="14" rx="3"/>
-<rect class="have" x="190" y="66" width="132" height="14" rx="3"/>
-<text class="s" x="450" y="77">53%</text>
-<text class="l m-gap" x="16" y="103">○</text>
-<text class="l" x="34" y="103">AWS</text>
+<rect class="bar" x="190" y="66" width="140" height="14" rx="3"/>
+<text class="s" x="450" y="77">56%</text>
+<text class="l" x="16" y="103">Windows</text>
 <rect class="track" x="190" y="92" width="250" height="14" rx="3"/>
-<rect class="gap" x="190" y="92" width="72" height="14" rx="3"/>
-<text class="s" x="450" y="103">29%</text>
-<text class="l m-gap" x="16" y="129">○</text>
-<text class="l" x="34" y="129">Active Directory</text>
+<rect class="bar" x="190" y="92" width="48" height="14" rx="3"/>
+<text class="s" x="450" y="103">19%</text>
+<text class="l" x="16" y="129">Hardware troubleshooting</text>
 <rect class="track" x="190" y="118" width="250" height="14" rx="3"/>
-<rect class="gap" x="190" y="118" width="45" height="14" rx="3"/>
-<text class="s" x="450" y="129">18%</text>
-<text class="l m-gap" x="16" y="155">○</text>
-<text class="l" x="34" y="155">Hardware troubleshooting</text>
+<rect class="bar" x="190" y="118" width="30" height="14" rx="3"/>
+<text class="s" x="450" y="129">12%</text>
+<text class="l" x="16" y="155">AWS</text>
 <rect class="track" x="190" y="144" width="250" height="14" rx="3"/>
-<rect class="gap" x="190" y="144" width="45" height="14" rx="3"/>
-<text class="s" x="450" y="155">18%</text>
-<text class="l m-have" x="16" y="181">✓</text>
-<text class="l" x="34" y="181">macOS</text>
+<rect class="bar" x="190" y="144" width="22" height="14" rx="3"/>
+<text class="s" x="450" y="155">9%</text>
+<text class="l" x="16" y="181">Active Directory</text>
 <rect class="track" x="190" y="170" width="250" height="14" rx="3"/>
-<rect class="have" x="190" y="170" width="45" height="14" rx="3"/>
-<text class="s" x="450" y="181">18%</text>
-<text class="l m-gap" x="16" y="207">○</text>
-<text class="l" x="34" y="207">Google Workspace</text>
+<rect class="bar" x="190" y="170" width="18" height="14" rx="3"/>
+<text class="s" x="450" y="181">7%</text>
+<text class="l" x="16" y="207">CompTIA A+</text>
 <rect class="track" x="190" y="196" width="250" height="14" rx="3"/>
-<rect class="gap" x="190" y="196" width="30" height="14" rx="3"/>
-<text class="s" x="450" y="207">12%</text>
-<text class="l m-gap" x="16" y="233">○</text>
-<text class="l" x="34" y="233">Slack</text>
+<rect class="bar" x="190" y="196" width="12" height="14" rx="3"/>
+<text class="s" x="450" y="207">5%</text>
+<text class="l" x="16" y="233">macOS</text>
 <rect class="track" x="190" y="222" width="250" height="14" rx="3"/>
-<rect class="gap" x="190" y="222" width="30" height="14" rx="3"/>
-<text class="s" x="450" y="233">12%</text>
-<text class="l m-gap" x="16" y="259">○</text>
-<text class="l" x="34" y="259">CompTIA A+</text>
+<rect class="bar" x="190" y="222" width="12" height="14" rx="3"/>
+<text class="s" x="450" y="233">5%</text>
+<text class="l" x="16" y="259">Ticketing systems</text>
 <rect class="track" x="190" y="248" width="250" height="14" rx="3"/>
-<rect class="gap" x="190" y="248" width="15" height="14" rx="3"/>
-<text class="s" x="450" y="259">6%</text>
-<text class="l m-gap" x="16" y="285">○</text>
-<text class="l" x="34" y="285">Intune</text>
+<rect class="bar" x="190" y="248" width="12" height="14" rx="3"/>
+<text class="s" x="450" y="259">5%</text>
+<text class="l" x="16" y="285">Access control</text>
 <rect class="track" x="190" y="274" width="250" height="14" rx="3"/>
-<rect class="gap" x="190" y="274" width="15" height="14" rx="3"/>
-<text class="s" x="450" y="285">6%</text>
-<text class="l m-gap" x="16" y="311">○</text>
-<text class="l" x="34" y="311">MDM</text>
+<rect class="bar" x="190" y="274" width="10" height="14" rx="3"/>
+<text class="s" x="450" y="285">4%</text>
+<text class="l" x="16" y="311">Google Workspace</text>
 <rect class="track" x="190" y="300" width="250" height="14" rx="3"/>
-<rect class="gap" x="190" y="300" width="15" height="14" rx="3"/>
-<text class="s" x="450" y="311">6%</text>
-<text class="l m-have" x="16" y="337">✓</text>
-<text class="l" x="34" y="337">Microsoft Azure</text>
+<rect class="bar" x="190" y="300" width="10" height="14" rx="3"/>
+<text class="s" x="450" y="311">4%</text>
+<text class="l" x="16" y="337">Slack</text>
 <rect class="track" x="190" y="326" width="250" height="14" rx="3"/>
-<rect class="have" x="190" y="326" width="15" height="14" rx="3"/>
-<text class="s" x="450" y="337">6%</text>
-<text class="l m-gap" x="16" y="363">○</text>
-<text class="l" x="34" y="363">Network+</text>
+<rect class="bar" x="190" y="326" width="10" height="14" rx="3"/>
+<text class="s" x="450" y="337">4%</text>
+<text class="l" x="16" y="363">Surveillance systems</text>
 <rect class="track" x="190" y="352" width="250" height="14" rx="3"/>
-<rect class="gap" x="190" y="352" width="15" height="14" rx="3"/>
-<text class="s" x="450" y="363">6%</text>
+<rect class="bar" x="190" y="352" width="10" height="14" rx="3"/>
+<text class="s" x="450" y="363">4%</text>
 </svg>

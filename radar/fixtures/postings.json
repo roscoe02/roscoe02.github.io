@@ -1,0 +1,62 @@
+[
+ {
+  "id": "d1",
+  "title": "IT Support Technician I",
+  "company": "Sample Co A",
+  "description": "Tier 1 support for Windows 11 and macOS users. Active Directory password resets, Microsoft 365 licensing, ServiceNow tickets. CompTIA A+ preferred."
+ },
+ {
+  "id": "d2",
+  "title": "Help Desk Analyst",
+  "company": "Sample Co B",
+  "description": "Troubleshoot hardware, printers, VPN and DNS issues. Active Directory, Microsoft 365, ticketing system experience."
+ },
+ {
+  "id": "d3",
+  "title": "Junior Systems Administrator",
+  "company": "Sample Co C",
+  "description": "Administer Linux and Windows servers. Bash and PowerShell scripting. Monitor logs. Exposure to Microsoft Azure or AWS."
+ },
+ {
+  "id": "d4",
+  "title": "NOC Technician",
+  "company": "Sample Co D",
+  "description": "Monitor network health. TCP/IP, DNS, DHCP, VPN. Linux command line. Network+ a plus. Ticketing systems."
+ },
+ {
+  "id": "d5",
+  "title": "Junior Database Administrator",
+  "company": "Sample Co E",
+  "description": "Write SQL queries, maintain SQL Server and MySQL databases, backups, Python scripting a plus."
+ },
+ {
+  "id": "d6",
+  "title": "Desktop Support Specialist",
+  "company": "Sample Co F",
+  "description": "Image and deploy Windows laptops with Intune. Active Directory, Microsoft 365, hardware troubleshooting, ServiceNow."
+ },
+ {
+  "id": "d7",
+  "title": "Entry Level SQL Analyst",
+  "company": "Sample Co G",
+  "description": "SQL, Excel, Power BI reporting. Python a plus."
+ },
+ {
+  "id": "d8",
+  "title": "IT Support Specialist",
+  "company": "Sample Co H",
+  "description": "Windows, macOS, Active Directory, Microsoft 365, PowerShell a plus, CompTIA A+."
+ },
+ {
+  "id": "d9",
+  "title": "Cloud Operations Associate",
+  "company": "Sample Co I",
+  "description": "Microsoft Azure, Linux, Bash, Git, CI/CD pipelines, log analysis."
+ },
+ {
+  "id": "d10",
+  "title": "Service Desk Technician",
+  "company": "Sample Co J",
+  "description": "Ticketing system, Windows, VPN troubleshooting, Active Directory account management."
+ }
+]

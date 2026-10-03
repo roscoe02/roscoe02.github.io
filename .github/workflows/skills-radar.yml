@@ -1,0 +1,41 @@
+name: Skills radar
+
+on:
+  schedule:
+    - cron: "17 13 * * 1"   # Mondays 13:17 UTC (8:17 a.m. Dallas time)
+  workflow_dispatch: {}      # "Run workflow" button on the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: skills-radar
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r radar/requirements.txt
+
+      - name: Build radar
+        env:
+          ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
+          ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python radar/radar.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "skills-radar[bot]"
+          git config user.email "skills-radar@users.noreply.github.com"
+          git add data/radar.json radar.svg
+          git diff --cached --quiet || git commit -m "Update skills radar"
+          git push

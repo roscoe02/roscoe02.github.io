@@ -1,0 +1,78 @@
+{
+ "d1": [
+  "Windows",
+  "macOS",
+  "Active Directory",
+  "Microsoft 365",
+  "ServiceNow",
+  "CompTIA A+"
+ ],
+ "d2": [
+  "Hardware troubleshooting",
+  "VPN",
+  "DNS",
+  "Active Directory",
+  "Microsoft 365",
+  "Ticketing systems"
+ ],
+ "d3": [
+  "Linux",
+  "Windows",
+  "Bash",
+  "PowerShell",
+  "Log analysis",
+  "Microsoft Azure",
+  "AWS"
+ ],
+ "d4": [
+  "TCP/IP",
+  "DNS",
+  "DHCP",
+  "VPN",
+  "Linux",
+  "Network+",
+  "Ticketing systems"
+ ],
+ "d5": [
+  "SQL",
+  "SQL Server",
+  "MySQL",
+  "Python"
+ ],
+ "d6": [
+  "Windows",
+  "Intune",
+  "Active Directory",
+  "Microsoft 365",
+  "Hardware troubleshooting",
+  "ServiceNow"
+ ],
+ "d7": [
+  "SQL",
+  "Excel",
+  "Power BI",
+  "Python"
+ ],
+ "d8": [
+  "Windows",
+  "macOS",
+  "Active Directory",
+  "Microsoft 365",
+  "PowerShell",
+  "CompTIA A+"
+ ],
+ "d9": [
+  "Microsoft Azure",
+  "Linux",
+  "Bash",
+  "Git",
+  "CI/CD",
+  "Log analysis"
+ ],
+ "d10": [
+  "Ticketing systems",
+  "Windows",
+  "VPN",
+  "Active Directory"
+ ]
+}

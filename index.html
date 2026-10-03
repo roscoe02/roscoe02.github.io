@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ethan Roscoe — Computer Science, UT Dallas</title>
+<meta name="description" content="Ethan Roscoe — CS student at UT Dallas (Dec 2026). Projects in Linux networking, cloud, and databases. Seeking entry-level IT, systems, and data roles.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌘</text></svg>">
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f6f7f9;
+    --text: #17191c;
+    --muted: #5d636e;
+    --accent: #1f4ea8;
+    --border: #dfe3e8;
+    --tag-bg: #eef1f6;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1216;
+      --surface: #161b22;
+      --text: #e7eaee;
+      --muted: #9aa3b0;
+      --accent: #7aa7ff;
+      --border: #262d36;
+      --tag-bg: #1b222b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1216; --surface: #161b22; --text: #e7eaee; --muted: #9aa3b0;
+    --accent: #7aa7ff; --border: #262d36; --tag-bg: #1b222b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--sans); line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px 72px; }
+  a { color: var(--accent); }
+  header { padding: 64px 0 28px; border-bottom: 1px solid var(--border); }
+  h1 { font-size: clamp(2rem, 6vw, 2.75rem); margin: 0 0 6px; letter-spacing: -0.02em; }
+  .tagline { color: var(--muted); font-size: 1.06rem; margin: 0 0 18px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .links a {
+    display: inline-block; padding: 7px 13px; border: 1px solid var(--border);
+    border-radius: 7px; text-decoration: none; font-size: 0.92rem; background: var(--surface);
+  }
+  .links a:hover { border-color: var(--accent); }
+  .links a.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  h2 {
+    font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.09em;
+    color: var(--muted); margin: 44px 0 14px; font-weight: 600;
+  }
+  .card {
+    border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px;
+    margin-bottom: 14px; background: var(--surface);
+  }
+  .card h3 { margin: 0 0 4px; font-size: 1.08rem; }
+  .card h3 a { text-decoration: none; }
+  .card h3 a:hover { text-decoration: underline; }
+  .meta { color: var(--muted); font-size: 0.86rem; margin: 0 0 10px; }
+  .card p { margin: 0 0 10px; }
+  .card ul { margin: 0 0 10px; padding-left: 18px; }
+  .card li { margin-bottom: 3px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-family: var(--mono); font-size: 0.74rem; padding: 3px 8px;
+    background: var(--tag-bg); border-radius: 5px; color: var(--muted);
+  }
+  .note { font-size: 0.86rem; color: var(--muted); font-style: italic; }
+  .skills p { margin: 0 0 8px; }
+  .skills strong { color: var(--text); }
+  .edu { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .edu .right { color: var(--muted); white-space: nowrap; }
+  footer {
+    margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 0.85rem;
+  }
+  .chat-log { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; max-height: 360px; overflow-y: auto; }
+  .bubble { padding: 9px 13px; border-radius: 10px; max-width: 88%; white-space: pre-wrap; font-size: 0.95rem; }
+  .bubble.user { align-self: flex-end; background: var(--accent); color: #fff; }
+  .bubble.bot { align-self: flex-start; background: var(--bg); border: 1px solid var(--border); }
+  .bubble.err { align-self: flex-start; color: var(--muted); font-style: italic; }
+  .chat-form { display: flex; gap: 8px; }
+  .chat-form input {
+    flex: 1; min-width: 0; padding: 9px 12px; border: 1px solid var(--border); border-radius: 7px;
+    background: var(--bg); color: var(--text); font: inherit;
+  }
+  .chat-form button {
+    padding: 9px 16px; border: 0; border-radius: 7px; background: var(--accent); color: #fff;
+    font: inherit; cursor: pointer;
+  }
+  .chat-form button:disabled { opacity: 0.55; cursor: default; }
+  .suggestions { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .suggestions button {
+    font: inherit; font-size: 0.82rem; padding: 4px 10px; border-radius: 999px; cursor: pointer;
+    border: 1px solid var(--border); background: var(--bg); color: var(--muted);
+  }
+  .radar-row { display: grid; grid-template-columns: 18px minmax(0, 11rem) 1fr 3rem; align-items: center; gap: 8px; margin-bottom: 7px; font-size: 0.92rem; }
+  .radar-track { height: 12px; background: var(--tag-bg); border-radius: 4px; overflow: hidden; }
+  .radar-bar { height: 100%; border-radius: 4px; }
+  .radar-bar.have { background: #2f855a; } .radar-bar.learning { background: #b7791f; } .radar-bar.gap { background: #a0aec0; }
+  .mark.have { color: #2f855a; } .mark.learning { color: #b7791f; } .mark.gap { color: #a0aec0; }
+  .radar-pct { color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+  .radar-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Ethan Roscoe</h1>
+    <p class="tagline">
+      Computer Science at UT Dallas, graduating December 2026. I build command-line tools in Python and C,
+      and I'm looking for a full-time entry-level role in IT, systems, cloud, or data.
+    </p>
+    <nav class="links">
+      <a class="primary" href="https://github.com/roscoe02">GitHub</a>
+      <a href="https://linkedin.com/in/ethanroscoe">LinkedIn</a>
+      <a href="mailto:roscoeethanyt@gmail.com">roscoeethanyt@gmail.com</a>
+    </nav>
+  </header>
+
+
+  <section id="ask" hidden>
+    <h2>Ask about me</h2>
+    <div class="card">
+      <p class="meta" style="margin-bottom:12px">An AI assistant that answers from my resume and project notes only. It says so when it doesn't know. Built with the Claude API on a Cloudflare Worker.</p>
+      <div class="suggestions" id="suggestions">
+        <button type="button">Has he worked with Linux?</button>
+        <button type="button">What did he build in the P2P project?</button>
+        <button type="button">Is he open to relocating?</button>
+      </div>
+      <div class="chat-log" id="chat-log" aria-live="polite"></div>
+      <form class="chat-form" id="chat-form">
+        <input id="chat-input" type="text" maxlength="600" placeholder="Ask about my skills, projects, or experience" aria-label="Your question" autocomplete="off">
+        <button type="submit" id="chat-send">Ask</button>
+      </form>
+    </div>
+  </section>
+
+  <h2>Projects</h2>
+
+  <div class="card">
+    <h3><a href="https://github.com/roscoe02/network-scanner">network-scanner</a></h3>
+    <p class="meta">Python · solo project · source on GitHub</p>
+    <p>A multithreaded TCP port scanner. It sweeps a host for open ports, names the service behind each one,
+       grabs version banners, and writes a JSON report.</p>
+    <ul>
+      <li>Scans hundreds of ports concurrently through a thread pool</li>
+      <li>Reads banners from live services (SSH, FTP, SMTP, HTTP)</li>
+      <li>Accepts single ports, ranges, and lists; tunable thread count and timeout</li>
+      <li>Standard library only — no dependencies to install</li>
+    </ul>
+    <p class="note">Built to understand what a scanner actually does instead of just running nmap: closed
+       versus filtered ports, why banner reads need a longer timeout, and how much a thread pool buys you.</p>
+    <div class="tags"><span class="tag">Python</span><span class="tag">sockets</span><span class="tag">threading</span><span class="tag">JSON</span><span class="tag">CLI</span></div>
+  </div>
+
+  <div class="card">
+    <h3><a href="https://github.com/roscoe02/task-manager">task-manager</a></h3>
+    <p class="meta">Python · solo project · source on GitHub</p>
+    <p>A terminal task tracker with priorities, due dates, and filters. Tasks persist to a local JSON file,
+       so there is no account and nothing to sync.</p>
+    <ul>
+      <li>Add, list, complete, and delete tasks by ID</li>
+      <li>Sorts by priority, then due date; filters for done and pending</li>
+      <li>Standard library only</li>
+    </ul>
+    <div class="tags"><span class="tag">Python</span><span class="tag">argparse</span><span class="tag">JSON</span><span class="tag">CLI</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Peer-to-Peer File Sharing System</h3>
+    <p class="meta">C, Linux, TCP sockets · 3-person team — I built the peer program · April 2026</p>
+    <p>A BitTorrent-style system: a central tracker indexes files, and peers trade 1&nbsp;KB chunks directly
+       with each other over TCP. I owned the peer client end to end.</p>
+    <ul>
+      <li>Download engine that pulls chunks in parallel across 4 worker threads, each thread claiming a
+          distinct stride of the file so no chunk is fetched twice</li>
+      <li>Server thread that answers chunk requests from other peers, plus a thread that re-announces
+          shared files to the tracker</li>
+      <li>MD5 verification of every completed file, and resume of interrupted downloads by reloading
+          the partial file and skipping finished chunks</li>
+      <li>Tested with my teammates across a 13-peer Linux network, including peers dropping mid-transfer</li>
+    </ul>
+    <p class="note">Teammates built the tracker server and the build/demo tooling. Code is private under
+       course policy — happy to walk through it in an interview.</p>
+    <div class="tags"><span class="tag">C</span><span class="tag">TCP/IP</span><span class="tag">pthreads</span><span class="tag">Linux</span><span class="tag">MD5</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Cloud Security &amp; Forensics Lab</h3>
+    <p class="meta">Microsoft Azure, Node.js, GitHub Actions, CodeQL · March 2026</p>
+    <p>An end-to-end look at how a vulnerability goes from code to exploit to log evidence, run entirely
+       against an app I deployed and owned.</p>
+    <ul>
+      <li>Deployed a deliberately vulnerable Node.js app to Azure App Service through a CI/CD pipeline</li>
+      <li>Ran CodeQL static analysis, secret scanning, and dynamic scans, which surfaced cross-site
+          scripting and broken authentication</li>
+      <li>Exploited each finding in the lab, then traced the attacks through App Service logs and Log Stream
+          back to their root cause</li>
+    </ul>
+    <div class="tags"><span class="tag">Azure</span><span class="tag">CI/CD</span><span class="tag">CodeQL</span><span class="tag">SAST/DAST</span><span class="tag">log analysis</span></div>
+  </div>
+
+  <div class="card">
+    <h3>Retail Inventory &amp; Order Database</h3>
+    <p class="meta">MySQL · 5-person team · Spring 2026</p>
+    <p>A relational database for a mock clothing brand, replacing a scenario where suppliers, production,
+       inventory, and orders all lived in disconnected spreadsheets.</p>
+    <ul>
+      <li>11 tables covering collections, products, suppliers, manufacturers, warehouses, customers, and orders,
+          with associative tables resolving the many-to-many relationships</li>
+      <li>10 foreign-key constraints plus NOT NULL and UNIQUE rules to keep the data consistent</li>
+      <li>Reporting queries including a four-table join from customer to order to line item to product,
+          and revenue aggregation</li>
+    </ul>
+    <div class="tags"><span class="tag">MySQL</span><span class="tag">SQL</span><span class="tag">ER modeling</span><span class="tag">Workbench</span></div>
+  </div>
+
+  <section id="radar" hidden>
+    <h2>Skills radar</h2>
+    <div class="card">
+      <p class="meta" id="radar-meta" style="margin-bottom:14px"></p>
+      <div id="radar-rows"></div>
+      <p class="note" style="margin-top:12px">Updated weekly by a GitHub Action: it pulls new Dallas–Fort Worth entry-level IT postings from the Adzuna jobs API, Claude labels the skills in each one, and Python does the counting. ✓ I have it · ◐ learning · ○ not yet. The ○ rows are my study list.</p>
+    </div>
+  </section>
+
+  <h2>Skills</h2>
+  <div class="card skills">
+    <p><strong>Languages:</strong> Python, C, Java, SQL, Bash</p>
+    <p><strong>Systems &amp; networking:</strong> Linux, Windows, macOS, TCP/IP, sockets, multithreading, Wireshark</p>
+    <p><strong>Cloud &amp; security:</strong> Microsoft Azure (App Service, Log Stream), GitHub Actions (CI/CD), CodeQL, SAST/DAST</p>
+    <p><strong>Databases &amp; tools:</strong> MySQL, MySQL Workbench, Git, GitHub, VS Code</p>
+  </div>
+
+  <h2>Education</h2>
+  <div class="card">
+    <div class="edu">
+      <div><strong>The University of Texas at Dallas</strong><br>
+        <span class="meta">B.S. Computer Science · GPA 3.9/4.0</span></div>
+      <div class="right">Expected Dec 2026</div>
+    </div>
+    <p style="margin-top:12px"><span class="meta">Coursework: Operating Systems, Computer Networks, Database Systems,
+      Unix/Linux System Administration, Systems Programming (UNIX), Computer Architecture,
+      Data Structures and Algorithms, Software Engineering</span></p>
+    <p class="meta" style="margin:0">Member, Cyber Defense and Research Unit (CDRU) — weekly workshops and hands-on
+      labs in offensive and defensive security. Previously Texas Tech University (CS coursework, GPA 3.9, transferred).</p>
+  </div>
+
+  <footer>
+    Open to entry-level IT, systems administration, cloud operations, and database roles starting January 2027.
+    Based in Frisco, TX — open to relocation. <a href="mailto:roscoeethanyt@gmail.com">Get in touch</a>.
+  </footer>
+
+</div>
+<script>
+(() => {
+  // Set this to your Worker URL after `npx wrangler deploy`.
+  let CHAT_ENDPOINT = "";
+  if (location.hostname === "localhost") {
+    CHAT_ENDPOINT = new URLSearchParams(location.search).get("chat") || CHAT_ENDPOINT;
+  }
+
+  // ── Skills radar ─────────────────────────────
+  fetch("data/radar.json", { cache: "no-cache" })
+    .then((r) => (r.ok ? r.json() : Promise.reject()))
+    .then((radar) => {
+      if (radar.demo && location.hostname !== "localhost") return; // don't publish sample data
+      const marks = { have: "✓", learning: "◐", gap: "○" };
+      document.getElementById("radar-meta").textContent =
+        `Top skills in ${radar.postings_analyzed} ${radar.location} entry-level postings from the last ${radar.window_days} days · updated ${radar.updated}` +
+        (radar.demo ? " · SAMPLE DATA" : "");
+      const rows = document.getElementById("radar-rows");
+      for (const s of radar.top_skills) {
+        const row = document.createElement("div");
+        row.className = "radar-row";
+        const mark = document.createElement("span");
+        mark.className = `mark ${s.status}`;
+        mark.textContent = marks[s.status];
+        const name = document.createElement("span");
+        name.className = "radar-name";
+        name.textContent = s.skill;
+        const track = document.createElement("div");
+        track.className = "radar-track";
+        const bar = document.createElement("div");
+        bar.className = `radar-bar ${s.status}`;
+        bar.style.width = `${Math.max(2, s.percent)}%`;
+        track.append(bar);
+        const pct = document.createElement("span");
+        pct.className = "radar-pct";
+        pct.textContent = `${s.percent}%`;
+        row.append(mark, name, track, pct);
+        rows.append(row);
+      }
+      document.getElementById("radar").hidden = false;
+    })
+    .catch(() => {});
+
+  // ── Ask about me ─────────────────────────────
+  if (!CHAT_ENDPOINT) return;
+  document.getElementById("ask").hidden = false;
+  const log = document.getElementById("chat-log");
+  const form = document.getElementById("chat-form");
+  const input = document.getElementById("chat-input");
+  const send = document.getElementById("chat-send");
+  const history = [];
+
+  const bubble = (text, cls) => {
+    const div = document.createElement("div");
+    div.className = `bubble ${cls}`;
+    div.textContent = text;
+    log.append(div);
+    log.scrollTop = log.scrollHeight;
+    return div;
+  };
+
+  async function ask(question) {
+    question = question.trim();
+    if (!question || send.disabled) return;
+    bubble(question, "user");
+    history.push({ role: "user", content: question });
+    input.value = "";
+    send.disabled = true;
+    const pending = bubble("Thinking…", "err");
+    try {
+      const res = await fetch(CHAT_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: history.slice(-10) }),
+      });
+      const data = await res.json().catch(() => ({}));
+      pending.remove();
+      if (res.ok && data.reply) {
+        bubble(data.reply, "bot");
+        history.push({ role: "assistant", content: data.reply });
+      } else {
+        history.pop();
+        bubble(data.error || "Something went wrong. Try again.", "err");
+      }
+    } catch {
+      pending.remove();
+      history.pop();
+      bubble("Couldn't reach the assistant. Check your connection and try again.", "err");
+    } finally {
+      send.disabled = false;
+      input.focus();
+    }
+  }
+
+  form.addEventListener("submit", (e) => { e.preventDefault(); ask(input.value); });
+  document.getElementById("suggestions").addEventListener("click", (e) => {
+    if (e.target.tagName === "BUTTON") ask(e.target.textContent);
+  });
+})();
+</script>
+</body>
+</html>

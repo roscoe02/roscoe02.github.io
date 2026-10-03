@@ -1,7 +1,8 @@
 {
   "updated": "2026-10-03",
   "location": "Dallas–Fort Worth",
-  "postings_analyzed": 103,
+  "postings_analyzed": 17,
+  "postings_fetched": 103,
   "window_days": 14,
   "searches": [
     "entry level IT support",
@@ -19,74 +20,74 @@
   "top_skills": [
     {
       "skill": "Windows",
-      "postings": 8,
-      "percent": 8,
+      "postings": 9,
+      "percent": 53,
       "status": "have"
     },
     {
       "skill": "AWS",
       "postings": 5,
-      "percent": 5,
+      "percent": 29,
+      "status": "gap"
+    },
+    {
+      "skill": "Active Directory",
+      "postings": 3,
+      "percent": 18,
       "status": "gap"
     },
     {
       "skill": "Hardware troubleshooting",
       "postings": 3,
-      "percent": 3,
+      "percent": 18,
       "status": "gap"
     },
     {
       "skill": "macOS",
       "postings": 3,
-      "percent": 3,
-      "status": "have"
-    },
-    {
-      "skill": "Active Directory",
-      "postings": 2,
-      "percent": 2,
-      "status": "gap"
-    },
-    {
-      "skill": "Node.js",
-      "postings": 2,
-      "percent": 2,
-      "status": "gap"
-    },
-    {
-      "skill": "Vue.js",
-      "postings": 2,
-      "percent": 2,
-      "status": "gap"
-    },
-    {
-      "skill": "Java",
-      "postings": 2,
-      "percent": 2,
+      "percent": 18,
       "status": "have"
     },
     {
       "skill": "Google Workspace",
       "postings": 2,
-      "percent": 2,
+      "percent": 12,
       "status": "gap"
     },
     {
-      "skill": "CMMC",
-      "postings": 1,
-      "percent": 1,
+      "skill": "Slack",
+      "postings": 2,
+      "percent": 12,
       "status": "gap"
     },
     {
-      "skill": "Azure Active Directory",
+      "skill": "CompTIA A+",
       "postings": 1,
-      "percent": 1,
+      "percent": 6,
       "status": "gap"
     },
     {
-      "skill": "Windows Azure",
+      "skill": "Intune",
       "postings": 1,
-      "percent": 1,
+      "percent": 6,
+      "status": "gap"
+    },
+    {
+      "skill": "MDM",
+      "postings": 1,
+      "percent": 6,
+      "status": "gap"
+    },
+    {
+      "skill": "Microsoft Azure",
+      "postings": 1,
+      "percent": 6,
+      "status": "have"
+    },
+    {
+      "skill": "Network+",
+      "postings": 1,
+      "percent": 6,
       "status": "gap"
     }
   ],

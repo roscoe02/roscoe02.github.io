@@ -1,0 +1,65 @@
+{
+  "updated": "2026-10-03",
+  "location": "Dallas–Fort Worth",
+  "postings_analyzed": 17,
+  "window_days": 7,
+  "searches": [
+    "entry level IT support",
+    "help desk technician",
+    "junior system administrator",
+    "junior database administrator",
+    "entry level SQL analyst",
+    "NOC technician"
+  ],
+  "top_skills": [
+    {
+      "skill": "Hardware troubleshooting",
+      "postings": 6,
+      "percent": 35,
+      "status": "gap"
+    },
+    {
+      "skill": "Windows",
+      "postings": 2,
+      "percent": 12,
+      "status": "have"
+    },
+    {
+      "skill": "Google Workspace",
+      "postings": 2,
+      "percent": 12,
+      "status": "gap"
+    },
+    {
+      "skill": "Slack",
+      "postings": 2,
+      "percent": 12,
+      "status": "gap"
+    },
+    {
+      "skill": "Active Directory",
+      "postings": 2,
+      "percent": 12,
+      "status": "gap"
+    },
+    {
+      "skill": "Ticketing systems",
+      "postings": 2,
+      "percent": 12,
+      "status": "gap"
+    },
+    {
+      "skill": "Operating systems",
+      "postings": 1,
+      "percent": 6,
+      "status": "gap"
+    },
+    {
+      "skill": "Networking protocols",
+      "postings": 1,
+      "percent": 6,
+      "status": "gap"
+    }
+  ],
+  "have_count": 1
+}

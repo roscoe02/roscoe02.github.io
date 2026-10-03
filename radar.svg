@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="560" height="302" viewBox="0 0 560 302" role="img" aria-label="Skills DFW entry-level IT employers asked for this week">
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="406" viewBox="0 0 560 406" role="img" aria-label="Skills DFW entry-level IT employers are asking for">
 <style>
 .bg{fill:#ffffff}.t{fill:#17191c;font:600 15px -apple-system,Segoe UI,Helvetica,Arial,sans-serif}
 .s{fill:#5d636e;font:12px -apple-system,Segoe UI,Helvetica,Arial,sans-serif}
@@ -7,47 +7,67 @@
 .m-have{fill:#2f855a}.m-learning{fill:#b7791f}.m-gap{fill:#a0aec0}
 @media (prefers-color-scheme: dark){.bg{fill:#0d1117}.t,.l{fill:#e6edf3}.s{fill:#8b949e}.track{fill:#21262d}}
 </style>
-<rect class="bg" width="560" height="302" rx="8"/>
-<text class="t" x="16" y="26">What DFW entry-level IT employers asked for this week</text>
-<text class="s" x="16" y="46">17 postings · updated 2026-10-03 · ✓ I have it · ◐ learning · ○ not yet</text>
-<text class="l m-gap" x="16" y="77">○</text>
-<text class="l" x="34" y="77">Hardware troubleshooting</text>
+<rect class="bg" width="560" height="406" rx="8"/>
+<text class="t" x="16" y="26">Skills DFW entry-level IT employers are asking for</text>
+<text class="s" x="16" y="46">103 postings from the last 14 days · updated 2026-10-03 · ✓ I have it · ◐ learning · ○ not yet</text>
+<text class="l m-have" x="16" y="77">✓</text>
+<text class="l" x="34" y="77">Windows</text>
 <rect class="track" x="190" y="66" width="250" height="14" rx="3"/>
-<rect class="gap" x="190" y="66" width="88" height="14" rx="3"/>
-<text class="s" x="450" y="77">35%</text>
-<text class="l m-have" x="16" y="103">✓</text>
-<text class="l" x="34" y="103">Windows</text>
+<rect class="have" x="190" y="66" width="20" height="14" rx="3"/>
+<text class="s" x="450" y="77">8%</text>
+<text class="l m-gap" x="16" y="103">○</text>
+<text class="l" x="34" y="103">AWS</text>
 <rect class="track" x="190" y="92" width="250" height="14" rx="3"/>
-<rect class="have" x="190" y="92" width="30" height="14" rx="3"/>
-<text class="s" x="450" y="103">12%</text>
+<rect class="gap" x="190" y="92" width="12" height="14" rx="3"/>
+<text class="s" x="450" y="103">5%</text>
 <text class="l m-gap" x="16" y="129">○</text>
-<text class="l" x="34" y="129">Google Workspace</text>
+<text class="l" x="34" y="129">Hardware troubleshooting</text>
 <rect class="track" x="190" y="118" width="250" height="14" rx="3"/>
-<rect class="gap" x="190" y="118" width="30" height="14" rx="3"/>
-<text class="s" x="450" y="129">12%</text>
-<text class="l m-gap" x="16" y="155">○</text>
-<text class="l" x="34" y="155">Slack</text>
+<rect class="gap" x="190" y="118" width="8" height="14" rx="3"/>
+<text class="s" x="450" y="129">3%</text>
+<text class="l m-have" x="16" y="155">✓</text>
+<text class="l" x="34" y="155">macOS</text>
 <rect class="track" x="190" y="144" width="250" height="14" rx="3"/>
-<rect class="gap" x="190" y="144" width="30" height="14" rx="3"/>
-<text class="s" x="450" y="155">12%</text>
+<rect class="have" x="190" y="144" width="8" height="14" rx="3"/>
+<text class="s" x="450" y="155">3%</text>
 <text class="l m-gap" x="16" y="181">○</text>
 <text class="l" x="34" y="181">Active Directory</text>
 <rect class="track" x="190" y="170" width="250" height="14" rx="3"/>
-<rect class="gap" x="190" y="170" width="30" height="14" rx="3"/>
-<text class="s" x="450" y="181">12%</text>
+<rect class="gap" x="190" y="170" width="5" height="14" rx="3"/>
+<text class="s" x="450" y="181">2%</text>
 <text class="l m-gap" x="16" y="207">○</text>
-<text class="l" x="34" y="207">Ticketing systems</text>
+<text class="l" x="34" y="207">Node.js</text>
 <rect class="track" x="190" y="196" width="250" height="14" rx="3"/>
-<rect class="gap" x="190" y="196" width="30" height="14" rx="3"/>
-<text class="s" x="450" y="207">12%</text>
+<rect class="gap" x="190" y="196" width="5" height="14" rx="3"/>
+<text class="s" x="450" y="207">2%</text>
 <text class="l m-gap" x="16" y="233">○</text>
-<text class="l" x="34" y="233">Operating systems</text>
+<text class="l" x="34" y="233">Vue.js</text>
 <rect class="track" x="190" y="222" width="250" height="14" rx="3"/>
-<rect class="gap" x="190" y="222" width="15" height="14" rx="3"/>
-<text class="s" x="450" y="233">6%</text>
-<text class="l m-gap" x="16" y="259">○</text>
-<text class="l" x="34" y="259">Networking protocols</text>
+<rect class="gap" x="190" y="222" width="5" height="14" rx="3"/>
+<text class="s" x="450" y="233">2%</text>
+<text class="l m-have" x="16" y="259">✓</text>
+<text class="l" x="34" y="259">Java</text>
 <rect class="track" x="190" y="248" width="250" height="14" rx="3"/>
-<rect class="gap" x="190" y="248" width="15" height="14" rx="3"/>
-<text class="s" x="450" y="259">6%</text>
+<rect class="have" x="190" y="248" width="5" height="14" rx="3"/>
+<text class="s" x="450" y="259">2%</text>
+<text class="l m-gap" x="16" y="285">○</text>
+<text class="l" x="34" y="285">Google Workspace</text>
+<rect class="track" x="190" y="274" width="250" height="14" rx="3"/>
+<rect class="gap" x="190" y="274" width="5" height="14" rx="3"/>
+<text class="s" x="450" y="285">2%</text>
+<text class="l m-gap" x="16" y="311">○</text>
+<text class="l" x="34" y="311">CMMC</text>
+<rect class="track" x="190" y="300" width="250" height="14" rx="3"/>
+<rect class="gap" x="190" y="300" width="4" height="14" rx="3"/>
+<text class="s" x="450" y="311">1%</text>
+<text class="l m-gap" x="16" y="337">○</text>
+<text class="l" x="34" y="337">Azure Active Directory</text>
+<rect class="track" x="190" y="326" width="250" height="14" rx="3"/>
+<rect class="gap" x="190" y="326" width="4" height="14" rx="3"/>
+<text class="s" x="450" y="337">1%</text>
+<text class="l m-gap" x="16" y="363">○</text>
+<text class="l" x="34" y="363">Windows Azure</text>
+<rect class="track" x="190" y="352" width="250" height="14" rx="3"/>
+<rect class="gap" x="190" y="352" width="4" height="14" rx="3"/>
+<text class="s" x="450" y="363">1%</text>
 </svg>

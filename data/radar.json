@@ -1,65 +1,94 @@
 {
   "updated": "2026-10-03",
   "location": "Dallas–Fort Worth",
-  "postings_analyzed": 17,
-  "window_days": 7,
+  "postings_analyzed": 103,
+  "window_days": 14,
   "searches": [
     "entry level IT support",
+    "IT support specialist",
     "help desk technician",
+    "desktop support technician",
+    "service desk analyst",
+    "IT technician",
     "junior system administrator",
+    "NOC technician",
     "junior database administrator",
     "entry level SQL analyst",
-    "NOC technician"
+    "cloud support associate"
   ],
   "top_skills": [
     {
-      "skill": "Hardware troubleshooting",
-      "postings": 6,
-      "percent": 35,
+      "skill": "Windows",
+      "postings": 8,
+      "percent": 8,
+      "status": "have"
+    },
+    {
+      "skill": "AWS",
+      "postings": 5,
+      "percent": 5,
       "status": "gap"
     },
     {
-      "skill": "Windows",
+      "skill": "Hardware troubleshooting",
+      "postings": 3,
+      "percent": 3,
+      "status": "gap"
+    },
+    {
+      "skill": "macOS",
+      "postings": 3,
+      "percent": 3,
+      "status": "have"
+    },
+    {
+      "skill": "Active Directory",
       "postings": 2,
-      "percent": 12,
+      "percent": 2,
+      "status": "gap"
+    },
+    {
+      "skill": "Node.js",
+      "postings": 2,
+      "percent": 2,
+      "status": "gap"
+    },
+    {
+      "skill": "Vue.js",
+      "postings": 2,
+      "percent": 2,
+      "status": "gap"
+    },
+    {
+      "skill": "Java",
+      "postings": 2,
+      "percent": 2,
       "status": "have"
     },
     {
       "skill": "Google Workspace",
       "postings": 2,
-      "percent": 12,
+      "percent": 2,
       "status": "gap"
     },
     {
-      "skill": "Slack",
-      "postings": 2,
-      "percent": 12,
-      "status": "gap"
-    },
-    {
-      "skill": "Active Directory",
-      "postings": 2,
-      "percent": 12,
-      "status": "gap"
-    },
-    {
-      "skill": "Ticketing systems",
-      "postings": 2,
-      "percent": 12,
-      "status": "gap"
-    },
-    {
-      "skill": "Operating systems",
+      "skill": "CMMC",
       "postings": 1,
-      "percent": 6,
+      "percent": 1,
       "status": "gap"
     },
     {
-      "skill": "Networking protocols",
+      "skill": "Azure Active Directory",
       "postings": 1,
-      "percent": 6,
+      "percent": 1,
+      "status": "gap"
+    },
+    {
+      "skill": "Windows Azure",
+      "postings": 1,
+      "percent": 1,
       "status": "gap"
     }
   ],
-  "have_count": 1
+  "have_count": 3
 }

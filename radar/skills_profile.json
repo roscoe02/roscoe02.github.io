@@ -1,9 +1,25 @@
 {
   "_comment": "Edit this as you learn. 'have' = skills on your resume that you can defend in an interview. 'learning' = actively studying (shown as in progress). 'aliases' maps posting wording (lowercase) to a name in these lists.",
   "have": [
-    "Linux", "Windows", "macOS", "TCP/IP", "Networking", "Python", "Bash", "SQL", "MySQL", "C", "Java",
-    "Microsoft Azure", "Git", "CI/CD", "Log analysis", "Wireshark", "Vulnerability scanning",
-    "Database design", "Training"
+    "Linux",
+    "Windows",
+    "macOS",
+    "TCP/IP",
+    "Networking",
+    "Python",
+    "Bash",
+    "SQL",
+    "MySQL",
+    "C",
+    "Java",
+    "Microsoft Azure",
+    "Git",
+    "CI/CD",
+    "Log analysis",
+    "Wireshark",
+    "Vulnerability scanning",
+    "Database design",
+    "Training"
   ],
   "learning": [],
   "aliases": {
@@ -14,6 +30,10 @@
     "relational databases": "Database design",
     "database administration": "Database design",
     "tcp/ip networking": "TCP/IP",
-    "networking fundamentals": "Networking"
+    "networking fundamentals": "Networking",
+    "windows azure": "Microsoft Azure",
+    "azure active directory": "Active Directory",
+    "entra id": "Active Directory",
+    "microsoft entra id": "Active Directory"
   }
 }

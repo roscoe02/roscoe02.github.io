@@ -263,7 +263,7 @@
 <script>
 (() => {
   // Set this to your Worker URL after `npx wrangler deploy`.
-  let CHAT_ENDPOINT = "";
+  let CHAT_ENDPOINT = "https://ask-ethan.agent7.workers.dev";
   if (location.hostname === "localhost") {
     CHAT_ENDPOINT = new URLSearchParams(location.search).get("chat") || CHAT_ENDPOINT;
   }
@@ -275,7 +275,7 @@
       if (radar.demo && location.hostname !== "localhost") return; // don't publish sample data
       const marks = { have: "✓", learning: "◐", gap: "○" };
       document.getElementById("radar-meta").textContent =
-        `Top skills in ${radar.postings_analyzed} ${radar.location} entry-level postings from the last ${radar.window_days} days · updated ${radar.updated}` +
+        `Share of ${radar.postings_analyzed} ${radar.location} entry-level IT postings (last ${radar.window_days} days) that name each skill · updated ${radar.updated}` +
         (radar.demo ? " · SAMPLE DATA" : "");
       const rows = document.getElementById("radar-rows");
       for (const s of radar.top_skills) {

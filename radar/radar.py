@@ -69,9 +69,10 @@ EXTRACTION_SCHEMA = {
                 "type": "object",
                 "properties": {
                     "id": {"type": "string"},
+                    "relevant": {"type": "boolean"},
                     "skills": {"type": "array", "items": {"type": "string"}},
                 },
-                "required": ["id", "skills"],
+                "required": ["id", "relevant", "skills"],
                 "additionalProperties": False,
             },
         }
@@ -82,7 +83,9 @@ EXTRACTION_SCHEMA = {
 
 EXTRACTION_INSTRUCTIONS = """You label job postings with the technical skills they ask for.
 
-For each posting, list the concrete, teachable technical skills, tools, platforms, and certifications the employer asks for. Use short canonical names so the same skill is spelled the same way across postings, for example: "Active Directory", "Microsoft 365", "Windows", "Linux", "TCP/IP", "DNS", "DHCP", "VPN", "SQL", "PowerShell", "Python", "Microsoft Azure", "AWS", "ServiceNow", "CompTIA A+", "Network+", "Security+", "Hardware troubleshooting", "Ticketing systems", "Log analysis".
+For each posting, set "relevant" to true only if it is an IT, help desk, desktop support, systems, network, cloud, or database role that an entry-level candidate could apply for. Set it to false for non-IT jobs (retail, warehouse, sales, healthcare) and for software-development roles built around a specific framework.
+
+Then list the concrete, teachable technical skills, tools, platforms, and certifications the employer asks for. Use short canonical names so the same skill is spelled the same way across postings, for example: "Active Directory", "Microsoft 365", "Windows", "Linux", "TCP/IP", "DNS", "DHCP", "VPN", "SQL", "PowerShell", "Python", "Microsoft Azure", "AWS", "ServiceNow", "CompTIA A+", "Network+", "Security+", "Hardware troubleshooting", "Ticketing systems", "Log analysis".
 
 Rules:
 - Only list skills the posting actually mentions. Do not infer skills it doesn't state.
@@ -142,7 +145,7 @@ def fetch_postings() -> list[dict]:
 # Step 2: extract skills with Claude
 # ──────────────────────────────────────────────
 
-def extract_skills(postings: list[dict]) -> dict[str, list[str]]:
+def extract_skills(postings: list[dict]) -> dict[str, dict]:
     import anthropic
 
     client = anthropic.Anthropic()
@@ -166,14 +169,18 @@ def extract_skills(postings: list[dict]) -> dict[str, list[str]]:
 
     text = next(b.text for b in response.content if b.type == "text")
     data = json.loads(text)
-    return {p["id"]: p["skills"] for p in data["postings"]}
+    labels = {p["id"]: {"relevant": p["relevant"], "skills": p["skills"]} for p in data["postings"]}
+    missing = len(postings) - len(labels)
+    print(f"Labels returned for {len(labels)}/{len(postings)} postings"
+          f" ({sum(l['relevant'] for l in labels.values())} relevant)" + (f"; {missing} missing" if missing else ""))
+    return labels
 
 
 # ──────────────────────────────────────────────
 # Step 3: count and classify
 # ──────────────────────────────────────────────
 
-def build_radar(postings: list[dict], skills_by_id: dict[str, list[str]], profile: dict) -> dict:
+def build_radar(postings: list[dict], labels: dict[str, dict], profile: dict) -> dict:
     aliases = {k.lower(): v for k, v in profile.get("aliases", {}).items()}
     have = {s.lower() for s in profile.get("have", [])}
     learning = {s.lower() for s in profile.get("learning", [])}
@@ -182,18 +189,27 @@ def build_radar(postings: list[dict], skills_by_id: dict[str, list[str]], profil
         name = name.strip()
         return aliases.get(name.lower(), name)
 
+    # Percentages are out of relevant postings that name at least one specific skill.
+    # Adzuna returns short snippets, so many postings name none; counting those would
+    # only dilute every percentage without telling us anything.
     counts: Counter[str] = Counter()
     display: dict[str, str] = {}
+    total = 0
     for p in postings:
-        per_posting = {canonical(s) for s in skills_by_id.get(p["id"], []) if s.strip()}
+        label = labels.get(p["id"])
+        if not label or not label["relevant"]:
+            continue
+        per_posting = {canonical(s) for s in label["skills"] if s.strip()}
+        if not per_posting:
+            continue
+        total += 1
         for skill in per_posting:
             key = skill.lower()
             counts[key] += 1
             display.setdefault(key, skill)
 
-    total = len(postings)
     top = []
-    for key, n in counts.most_common(TOP_N):
+    for key, n in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))[:TOP_N]:
         status = "have" if key in have else "learning" if key in learning else "gap"
         top.append({
             "skill": display[key],
@@ -206,6 +222,7 @@ def build_radar(postings: list[dict], skills_by_id: dict[str, list[str]], profil
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "location": "Dallas–Fort Worth",
         "postings_analyzed": total,
+        "postings_fetched": len(postings),
         "window_days": MAX_DAYS_OLD,
         "searches": SEARCHES,
         "top_skills": top,
@@ -235,7 +252,7 @@ def render_svg(radar: dict) -> str:
         "</style>",
         f'<rect class="bg" width="{width}" height="{height}" rx="8"/>',
         f'<text class="t" x="16" y="26">Skills DFW entry-level IT employers are asking for</text>',
-        f'<text class="s" x="16" y="46">{radar["postings_analyzed"]} postings from the last {radar["window_days"]} days · updated {radar["updated"]} · ✓ I have it · ◐ learning · ○ not yet</text>',
+        f'<text class="s" x="16" y="46">{radar["postings_analyzed"]} relevant postings from the last {radar["window_days"]} days · updated {radar["updated"]} · ✓ I have it · ◐ learning · ○ not yet</text>',
     ]
     for i, row in enumerate(rows):
         y = top_pad + i * row_h
@@ -261,14 +278,15 @@ def main() -> None:
 
     if args.fixtures:
         postings = json.loads((FIXTURES / "postings.json").read_text())
-        skills_by_id = json.loads((FIXTURES / "extraction.json").read_text())
+        labels = {pid: {"relevant": True, "skills": skills}
+                  for pid, skills in json.loads((FIXTURES / "extraction.json").read_text()).items()}
     else:
         postings = fetch_postings()
         if len(postings) < MIN_POSTINGS:
             sys.exit(f"Only {len(postings)} postings found (need {MIN_POSTINGS}); leaving the previous radar in place.")
-        skills_by_id = extract_skills(postings)
+        labels = extract_skills(postings)
 
-    radar = build_radar(postings, skills_by_id, profile)
+    radar = build_radar(postings, labels, profile)
     if args.fixtures:
         radar["demo"] = True
 

@@ -5,7 +5,7 @@ Skills radar: which skills are Dallas–Fort Worth entry-level IT employers aski
 Pipeline:
   1. Fetch recent entry-level postings from the Adzuna jobs API.
   2. Ask Claude to list the skills each posting requires (classification only).
-  3. Count mentions in Python, mark each skill have / learning / gap from skills_profile.json.
+  3. Count mentions in Python (aliases.json merges spellings like "Windows Azure" into "Microsoft Azure").
   4. Write data/radar.json (read by the portfolio page) and radar.svg (embedded in the GitHub README).
 
 Environment:
@@ -34,7 +34,7 @@ HERE = Path(__file__).resolve().parent
 SITE = HERE.parent
 DATA_OUT = SITE / "data" / "radar.json"
 SVG_OUT = SITE / "radar.svg"
-PROFILE = HERE / "skills_profile.json"
+ALIASES = HERE / "aliases.json"
 FIXTURES = HERE / "fixtures"
 
 MODEL = "claude-haiku-4-5"
@@ -180,10 +180,8 @@ def extract_skills(postings: list[dict]) -> dict[str, dict]:
 # Step 3: count and classify
 # ──────────────────────────────────────────────
 
-def build_radar(postings: list[dict], labels: dict[str, dict], profile: dict) -> dict:
-    aliases = {k.lower(): v for k, v in profile.get("aliases", {}).items()}
-    have = {s.lower() for s in profile.get("have", [])}
-    learning = {s.lower() for s in profile.get("learning", [])}
+def build_radar(postings: list[dict], labels: dict[str, dict], alias_map: dict[str, str]) -> dict:
+    aliases = {k.lower(): v for k, v in alias_map.items()}
 
     def canonical(name: str) -> str:
         name = name.strip()
@@ -210,12 +208,10 @@ def build_radar(postings: list[dict], labels: dict[str, dict], profile: dict) ->
 
     top = []
     for key, n in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))[:TOP_N]:
-        status = "have" if key in have else "learning" if key in learning else "gap"
         top.append({
             "skill": display[key],
             "postings": n,
             "percent": round(100 * n / total) if total else 0,
-            "status": status,
         })
 
     return {
@@ -226,7 +222,6 @@ def build_radar(postings: list[dict], labels: dict[str, dict], profile: dict) ->
         "window_days": MAX_DAYS_OLD,
         "searches": SEARCHES,
         "top_skills": top,
-        "have_count": sum(1 for s in top if s["status"] == "have"),
     }
 
 
@@ -238,7 +233,6 @@ def render_svg(radar: dict) -> str:
     rows = radar["top_skills"]
     width, row_h, top_pad, label_w, bar_max = 560, 26, 64, 190, 250
     height = top_pad + row_h * len(rows) + 30
-    marks = {"have": "✓", "learning": "◐", "gap": "○"}
 
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="Skills DFW entry-level IT employers are asking for">',
@@ -246,23 +240,20 @@ def render_svg(radar: dict) -> str:
         ".bg{fill:#ffffff}.t{fill:#17191c;font:600 15px -apple-system,Segoe UI,Helvetica,Arial,sans-serif}",
         ".s{fill:#5d636e;font:12px -apple-system,Segoe UI,Helvetica,Arial,sans-serif}",
         ".l{fill:#17191c;font:13px -apple-system,Segoe UI,Helvetica,Arial,sans-serif}",
-        ".have{fill:#2f855a}.learning{fill:#b7791f}.gap{fill:#a0aec0}.track{fill:#edf0f4}",
-        ".m-have{fill:#2f855a}.m-learning{fill:#b7791f}.m-gap{fill:#a0aec0}",
-        "@media (prefers-color-scheme: dark){.bg{fill:#0d1117}.t,.l{fill:#e6edf3}.s{fill:#8b949e}.track{fill:#21262d}}",
+        ".bar{fill:#3b6fd4}.track{fill:#edf0f4}",
+        "@media (prefers-color-scheme: dark){.bg{fill:#0d1117}.t,.l{fill:#e6edf3}.s{fill:#8b949e}.track{fill:#21262d}.bar{fill:#6f9bff}}",
         "</style>",
         f'<rect class="bg" width="{width}" height="{height}" rx="8"/>',
         f'<text class="t" x="16" y="26">Skills DFW entry-level IT employers are asking for</text>',
-        f'<text class="s" x="16" y="46">{radar["postings_analyzed"]} relevant postings from the last {radar["window_days"]} days · updated {radar["updated"]} · ✓ I have it · ◐ learning · ○ not yet</text>',
+        f'<text class="s" x="16" y="46">{radar["postings_analyzed"]} relevant postings from the last {radar["window_days"]} days · updated {radar["updated"]}</text>',
     ]
     for i, row in enumerate(rows):
         y = top_pad + i * row_h
         bar = max(4, round(bar_max * row["percent"] / 100))
-        status = row["status"]
         parts += [
-            f'<text class="l m-{status}" x="16" y="{y + 13}">{marks[status]}</text>',
-            f'<text class="l" x="34" y="{y + 13}">{escape(row["skill"])}</text>',
+            f'<text class="l" x="16" y="{y + 13}">{escape(row["skill"])}</text>',
             f'<rect class="track" x="{label_w}" y="{y + 2}" width="{bar_max}" height="14" rx="3"/>',
-            f'<rect class="{status}" x="{label_w}" y="{y + 2}" width="{bar}" height="14" rx="3"/>',
+            f'<rect class="bar" x="{label_w}" y="{y + 2}" width="{bar}" height="14" rx="3"/>',
             f'<text class="s" x="{label_w + bar_max + 10}" y="{y + 13}">{row["percent"]}%</text>',
         ]
     parts.append("</svg>")
@@ -274,7 +265,7 @@ def main() -> None:
     parser.add_argument("--fixtures", action="store_true", help="offline demo from radar/fixtures/")
     args = parser.parse_args()
 
-    profile = json.loads(PROFILE.read_text())
+    alias_map = json.loads(ALIASES.read_text())
 
     if args.fixtures:
         postings = json.loads((FIXTURES / "postings.json").read_text())
@@ -286,16 +277,16 @@ def main() -> None:
             sys.exit(f"Only {len(postings)} postings found (need {MIN_POSTINGS}); leaving the previous radar in place.")
         labels = extract_skills(postings)
 
-    radar = build_radar(postings, labels, profile)
+    radar = build_radar(postings, labels, alias_map)
     if args.fixtures:
         radar["demo"] = True
 
     DATA_OUT.parent.mkdir(parents=True, exist_ok=True)
     DATA_OUT.write_text(json.dumps(radar, indent=2, ensure_ascii=False) + "\n")
     SVG_OUT.write_text(render_svg(radar) + "\n")
-    print(f"Analyzed {radar['postings_analyzed']} postings; you have {radar['have_count']}/{len(radar['top_skills'])} of the top skills.")
+    print(f"Analyzed {radar['postings_analyzed']} postings.")
     for row in radar["top_skills"]:
-        print(f"  {row['status']:<9}{row['percent']:>4}%  {row['skill']}")
+        print(f"  {row['percent']:>4}%  {row['skill']}")
 
 
 if __name__ == "__main__":

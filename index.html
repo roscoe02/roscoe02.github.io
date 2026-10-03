@@ -100,11 +100,9 @@
     font: inherit; font-size: 0.82rem; padding: 4px 10px; border-radius: 999px; cursor: pointer;
     border: 1px solid var(--border); background: var(--bg); color: var(--muted);
   }
-  .radar-row { display: grid; grid-template-columns: 18px minmax(0, 11rem) 1fr 3rem; align-items: center; gap: 8px; margin-bottom: 7px; font-size: 0.92rem; }
+  .radar-row { display: grid; grid-template-columns: minmax(0, 12rem) 1fr 3rem; align-items: center; gap: 8px; margin-bottom: 7px; font-size: 0.92rem; }
   .radar-track { height: 12px; background: var(--tag-bg); border-radius: 4px; overflow: hidden; }
-  .radar-bar { height: 100%; border-radius: 4px; }
-  .radar-bar.have { background: #2f855a; } .radar-bar.learning { background: #b7791f; } .radar-bar.gap { background: #a0aec0; }
-  .mark.have { color: #2f855a; } .mark.learning { color: #b7791f; } .mark.gap { color: #a0aec0; }
+  .radar-bar { height: 100%; border-radius: 4px; background: var(--accent); }
   .radar-pct { color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
   .radar-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 </style>
@@ -121,7 +119,7 @@
     <nav class="links">
       <a class="primary" href="https://github.com/roscoe02">GitHub</a>
       <a href="https://linkedin.com/in/ethanroscoe">LinkedIn</a>
-      <a href="mailto:roscoeethanyt@gmail.com">roscoeethanyt@gmail.com</a>
+      <a href="mailto:ethanrroscoe@gmail.com">ethanrroscoe@gmail.com</a>
     </nav>
   </header>
 
@@ -228,7 +226,7 @@
     <div class="card">
       <p class="meta" id="radar-meta" style="margin-bottom:14px"></p>
       <div id="radar-rows"></div>
-      <p class="note" style="margin-top:12px">Updated weekly by a GitHub Action: it pulls new Dallas–Fort Worth entry-level IT postings from the Adzuna jobs API, Claude labels the skills in each one, and Python does the counting. ✓ I have it · ◐ learning · ○ not yet. The ○ rows are my study list.</p>
+      <p class="note" style="margin-top:12px">Updated weekly by a GitHub Action: it pulls new Dallas–Fort Worth entry-level IT postings from the Adzuna jobs API, Claude labels the skills in each one, and Python does the counting.</p>
     </div>
   </section>
 
@@ -256,7 +254,7 @@
 
   <footer>
     Open to entry-level IT, systems administration, cloud operations, and database roles starting January 2027.
-    Based in Frisco, TX — open to relocation. <a href="mailto:roscoeethanyt@gmail.com">Get in touch</a>.
+    Based in Frisco, TX — open to relocation. <a href="mailto:ethanrroscoe@gmail.com">Get in touch</a>.
   </footer>
 
 </div>
@@ -273,7 +271,6 @@
     .then((r) => (r.ok ? r.json() : Promise.reject()))
     .then((radar) => {
       if (radar.demo && location.hostname !== "localhost") return; // don't publish sample data
-      const marks = { have: "✓", learning: "◐", gap: "○" };
       document.getElementById("radar-meta").textContent =
         `Share of ${radar.postings_analyzed} ${radar.location} entry-level IT postings (last ${radar.window_days} days) that name each skill · updated ${radar.updated}` +
         (radar.demo ? " · SAMPLE DATA" : "");
@@ -281,22 +278,19 @@
       for (const s of radar.top_skills) {
         const row = document.createElement("div");
         row.className = "radar-row";
-        const mark = document.createElement("span");
-        mark.className = `mark ${s.status}`;
-        mark.textContent = marks[s.status];
         const name = document.createElement("span");
         name.className = "radar-name";
         name.textContent = s.skill;
         const track = document.createElement("div");
         track.className = "radar-track";
         const bar = document.createElement("div");
-        bar.className = `radar-bar ${s.status}`;
+        bar.className = "radar-bar";
         bar.style.width = `${Math.max(2, s.percent)}%`;
         track.append(bar);
         const pct = document.createElement("span");
         pct.className = "radar-pct";
         pct.textContent = `${s.percent}%`;
-        row.append(mark, name, track, pct);
+        row.append(name, track, pct);
         rows.append(row);
       }
       document.getElementById("radar").hidden = false;

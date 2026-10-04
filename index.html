@@ -137,6 +137,21 @@
     .runline .c { display: none; }
     .demand { grid-template-columns: minmax(0, 8rem) minmax(0, 1fr) 2.6rem; }
   }
+  /* Tabs: one section at a time, selected tab in reverse video */
+  .tabs { display: flex; flex-wrap: wrap; gap: 4px; padding: 12px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font: 400 0.95rem/1 var(--mono); }
+  .tabs [role="tab"] { font: inherit; color: var(--ink); background: none; border: 0; padding: 9px 13px; border-radius: 2px; cursor: pointer; }
+  .tabs [role="tab"][aria-selected="true"] { background: var(--ink); color: var(--paper); }
+  .tabs [role="tab"]:not([aria-selected="true"]):hover { background: var(--wash); }
+  .tabs [role="tab"][hidden] { display: none; }
+  .sec.panel { border-top: 0; min-height: 360px; }
+  .agent-intro { margin: 0 0 4px; max-width: 62ch; }
+  .agent-how { margin: 0 0 16px; font-size: 0.88rem; color: var(--dim); max-width: 62ch; }
+  .edu-line { margin: 12px 0 0; color: var(--dim); }
+  @media (max-width: 720px) {
+    .tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; gap: 2px; margin: 0 -16px; padding: 10px 16px; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tabs [role="tab"] { padding: 7px 7px; font-size: 0.86rem; white-space: nowrap; flex-shrink: 0; }
+  }
 </style>
 </head>
 <body>
@@ -164,7 +179,30 @@
       </div>
     </section>
 
-    <section class="sec" id="projects" aria-labelledby="h-proj">
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button type="button" role="tab" id="tab-ask" data-tab="ask" aria-controls="panel-ask" aria-selected="true">ask</button>
+      <button type="button" role="tab" id="tab-projects" data-tab="projects" aria-controls="panel-projects" aria-selected="false" tabindex="-1">projects</button>
+      <button type="button" role="tab" id="tab-skills" data-tab="skills" aria-controls="panel-skills" aria-selected="false" tabindex="-1">skills</button>
+      <button type="button" role="tab" id="tab-demand" data-tab="demand" aria-controls="panel-demand" aria-selected="false" tabindex="-1" hidden>in demand</button>
+      <button type="button" role="tab" id="tab-contact" data-tab="contact" aria-controls="panel-contact" aria-selected="false" tabindex="-1">contact</button>
+    </nav>
+
+    <section class="sec panel" id="panel-ask" role="tabpanel" aria-labelledby="tab-ask">
+      <h2>ASK</h2>
+      <div class="body">
+        <p class="agent-intro">A personal agent I built to answer questions about my resume and projects. Ask it what a recruiter would: what I've worked with, what I built, where I'm willing to work.</p>
+        <p class="agent-how">It answers only from my real experience and says so when it doesn't know. Built on the Claude API, running on a Cloudflare Worker.</p>
+        <div class="chat-log" id="chat-log" aria-live="polite"></div>
+        <form class="ask-form" id="ask-form">
+          <span aria-hidden="true">&gt;</span>
+          <input id="ask-input" type="text" maxlength="600" placeholder="Ask a question about Ethan" aria-label="Ask a question about Ethan" autocomplete="off">
+          <button type="submit" id="ask-send">ask</button>
+        </form>
+        <p class="tries" id="tries">Try: <button type="button">Has he worked with Linux?</button>, <button type="button">What did he build in the P2P project?</button>, <button type="button">Is he open to relocating?</button></p>
+      </div>
+    </section>
+
+    <section class="sec panel" id="panel-projects" role="tabpanel" aria-labelledby="tab-projects" hidden>
       <h2 id="h-proj">PROJECTS</h2>
       <div class="body">
         <div class="filters" role="group" aria-label="Filter projects">
@@ -190,7 +228,7 @@
           </li>
           <li data-kind="personal">
             <div><h3>This Site and Its Assistant</h3><span class="kind">personal</span></div>
-            <p>The assistant below runs on the Claude API behind a Cloudflare Worker; a weekly GitHub Action tallies the skills local employers ask for.<span class="stack">Claude API, Cloudflare Workers, GitHub Actions</span></p>
+            <p>The agent on the ask tab runs on the Claude API behind a Cloudflare Worker; a weekly GitHub Action tallies the skills local employers ask for.<span class="stack">Claude API, Cloudflare Workers, GitHub Actions</span></p>
             <a class="src" href="https://github.com/roscoe02/roscoe02.github.io">source</a>
           </li>
           <li data-kind="school">
@@ -207,7 +245,7 @@
       </div>
     </section>
 
-    <section class="sec" aria-labelledby="h-skills">
+    <section class="sec panel" id="panel-skills" role="tabpanel" aria-labelledby="tab-skills" hidden>
       <h2 id="h-skills">SKILLS</h2>
       <div class="body">
         <dl class="skills">
@@ -219,7 +257,7 @@
       </div>
     </section>
 
-    <section class="sec" id="demand" aria-labelledby="h-demand" hidden>
+    <section class="sec panel" id="panel-demand" role="tabpanel" aria-labelledby="tab-demand" hidden>
       <h2 id="h-demand">IN DEMAND</h2>
       <div class="body">
         <div class="demand" id="demand-rows"></div>
@@ -227,21 +265,7 @@
       </div>
     </section>
 
-    <section class="sec" id="ask" aria-labelledby="h-ask" hidden>
-      <h2 id="h-ask">ASK</h2>
-      <div class="body">
-        <div class="chat-log" id="chat-log" aria-live="polite"></div>
-        <form class="ask-form" id="ask-form">
-          <span aria-hidden="true">&gt;</span>
-          <input id="ask-input" type="text" maxlength="600" placeholder="Ask a question about Ethan" aria-label="Ask a question about Ethan" autocomplete="off">
-          <button type="submit" id="ask-send">ask</button>
-        </form>
-        <p class="tries" id="tries">Try: <button type="button">Has he worked with Linux?</button>, <button type="button">What did he build in the P2P project?</button></p>
-        <p class="fine">Answers come only from my resume and project notes, and it says when it doesn't know.</p>
-      </div>
-    </section>
-
-    <section class="sec" aria-labelledby="h-see">
+    <section class="sec panel" id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" hidden>
       <h2 id="h-see">SEE ALSO</h2>
       <div class="body">
         <p class="see-also">
@@ -249,6 +273,7 @@
           <a href="https://linkedin.com/in/ethanroscoe">linkedin</a>
           <a href="mailto:ethanrroscoe@gmail.com">ethanrroscoe@gmail.com</a>
         </p>
+        <p class="edu-line">B.S. Computer Science, The University of Texas at Dallas, expected December 2026. Previously computer science coursework at Texas Tech University.</p>
       </div>
     </section>
   </main>
@@ -281,6 +306,38 @@
     labelToggle();
   });
 
+  // Tabs: one panel at a time; the URL hash (#projects, #skills, ...) picks the tab.
+  const tabs = [...document.querySelectorAll('[role="tab"]')];
+  const visibleTabs = () => tabs.filter((t) => !t.hidden);
+  function showTab(name, focus) {
+    const vis = visibleTabs();
+    const tab = vis.find((t) => t.dataset.tab === name) || vis[0];
+    tabs.forEach((t) => {
+      const on = t === tab;
+      t.setAttribute("aria-selected", String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+    if (focus) tab.focus();
+  }
+  tabs.forEach((t) => {
+    t.addEventListener("click", () => {
+      history.replaceState(null, "", "#" + t.dataset.tab);
+      showTab(t.dataset.tab);
+    });
+    t.addEventListener("keydown", (e) => {
+      const vis = visibleTabs(); const i = vis.indexOf(t);
+      const next = { ArrowRight: vis[(i + 1) % vis.length], ArrowLeft: vis[(i - 1 + vis.length) % vis.length], Home: vis[0], End: vis[vis.length - 1] }[e.key];
+      if (!next) return;
+      e.preventDefault();
+      history.replaceState(null, "", "#" + next.dataset.tab);
+      showTab(next.dataset.tab, true);
+    });
+  });
+  window.addEventListener("hashchange", () => showTab(location.hash.slice(1)));
+  if (!CHAT_ENDPOINT) document.getElementById("tab-ask").hidden = true;
+  showTab(location.hash.slice(1) || "ask");
+
   // Project filters
   const filterBtns = document.querySelectorAll(".filters button");
   filterBtns.forEach((btn) => btn.addEventListener("click", () => {
@@ -307,18 +364,18 @@
         `A GitHub Action pulls the postings from Adzuna every Monday; Claude labels the skills and Python counts them.` +
         (radar.demo ? " (Sample data.)" : "");
       document.getElementById("foot-date").textContent = radar.updated;
-      document.getElementById("demand").hidden = false;
+      document.getElementById("tab-demand").hidden = false;
+      if (location.hash === "#demand") showTab("demand");
     })
     .catch(() => {});
 
   // Ask
   if (!CHAT_ENDPOINT) return;
-  document.getElementById("ask").hidden = false;
   const log = document.getElementById("chat-log");
   const form = document.getElementById("ask-form");
   const input = document.getElementById("ask-input");
   const send = document.getElementById("ask-send");
-  const history = [];
+  const chatHistory = [];
   const line = (text, cls) => {
     const p = document.createElement("p"); p.className = `msg ${cls}`; p.textContent = text;
     log.append(p); log.scrollTop = log.scrollHeight; return p;
@@ -328,7 +385,7 @@
     q = q.trim();
     if (!q || send.disabled) return;
     line(q, "q");
-    history.push({ role: "user", content: q });
+    chatHistory.push({ role: "user", content: q });
     input.value = "";
     send.disabled = true;
     const pending = line("Thinking…", "note");
@@ -336,20 +393,20 @@
       const res = await fetch(CHAT_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: history.slice(-10) }),
+        body: JSON.stringify({ messages: chatHistory.slice(-10) }),
       });
       const data = await res.json().catch(() => ({}));
       pending.remove();
       if (res.ok && data.reply) {
         line(data.reply, "a");
-        history.push({ role: "assistant", content: data.reply });
+        chatHistory.push({ role: "assistant", content: data.reply });
       } else {
-        history.pop();
+        chatHistory.pop();
         line(data.error || "No answer came back. Try asking again.", "note");
       }
     } catch {
       pending.remove();
-      history.pop();
+      chatHistory.pop();
       line("Couldn't reach the assistant. Check your connection and ask again.", "note");
     } finally {
       send.disabled = false;

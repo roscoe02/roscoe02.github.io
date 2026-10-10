@@ -303,11 +303,11 @@
     <section class="panel" id="panel-skills" role="tabpanel" aria-labelledby="tab-skills" hidden>
       <h2 id="h-skills">Skills</h2>
       <dl class="skills">
-          <dt>languages</dt><dd>Python, PowerShell, Bash, SQL, TypeScript, C, Java</dd>
-          <dt>windows</dt><dd>Active Directory, Group Policy, Windows Server, Windows 11, Hyper-V, DNS, DHCP, GLPI</dd>
-          <dt>systems</dt><dd>Linux, macOS, TCP/IP, sockets, Wireshark</dd>
-          <dt>cloud</dt><dd>Microsoft Azure, Terraform, Docker, GitHub Actions, CodeQL, SAST/DAST scanning</dd>
-          <dt>data &amp; tools</dt><dd>PostgreSQL (Supabase), MySQL, Next.js, Git, GitHub, VS Code</dd>
+          <dt>scripting</dt><dd>PowerShell, Python, Bash, SQL</dd>
+          <dt>windows</dt><dd>Active Directory, Group Policy, Windows Server, Windows 11, Hyper-V, DNS, DHCP, GLPI (ticketing)</dd>
+          <dt>systems</dt><dd>Linux, macOS, TCP/IP</dd>
+          <dt>cloud</dt><dd>Microsoft Azure, Terraform, Docker, GitHub Actions (CI/CD)</dd>
+          <dt>data &amp; tools</dt><dd>MySQL, PostgreSQL, Git, GitHub</dd>
       </dl>
     </section>
 
@@ -460,6 +460,43 @@
     if (e.target.tagName === "BUTTON") ask(e.target.textContent);
   });
 })();
+</script>
+<script>
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    const tab = a && document.querySelector(`[role="tab"][data-tab="${a.getAttribute("href").slice(1).replace(/^panel-/, "")}"]`);
+    if (!tab) return;
+    e.preventDefault();
+    tab.click();
+    const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    tab.closest('[role="tablist"]').scrollIntoView({ behavior: still ? "auto" : "smooth", block: "start" });
+    if (tab.dataset.tab === "ask") document.getElementById("ask-input").focus({ preventScroll: true });
+  });
+</script>
+<script>
+  // Hero typing: the name types once and stays; the role line cycles. Static under reduced motion.
+  (() => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const nameEl = document.getElementById("type-name"), roleEl = document.getElementById("type-role");
+    const caretName = document.getElementById("caret-name"), caretRole = document.getElementById("caret-role");
+    const name = nameEl.textContent, roles = ["help desk & IT support", "systems administration", "cloud operations", "data"];
+    const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+    async function type(el, text, speed) { for (let i = 1; i <= text.length; i++) { el.textContent = text.slice(0, i); await wait(speed + Math.random() * 40); } }
+    async function erase(el, speed) { while (el.textContent.length) { el.textContent = el.textContent.slice(0, -1); await wait(speed); } }
+    (async () => {
+      nameEl.textContent = ""; roleEl.textContent = "";
+      await wait(250);
+      await type(nameEl, name, 70);
+      await wait(700);
+      caretName.hidden = true; caretRole.hidden = false;
+      for (let i = 0; ; i = (i + 1) % roles.length) {
+        await type(roleEl, roles[i], 45);
+        await wait(1900);
+        await erase(roleEl, 28);
+        await wait(260);
+      }
+    })();
+  })();
 </script>
 <script>
   document.addEventListener("click", (e) => {

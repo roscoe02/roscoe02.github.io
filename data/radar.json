@@ -1,8 +1,8 @@
 {
-  "updated": "2026-10-12",
+  "updated": "2026-10-19",
   "location": "Dallas–Fort Worth",
-  "postings_analyzed": 12,
-  "postings_fetched": 64,
+  "postings_analyzed": 9,
+  "postings_fetched": 41,
   "window_days": 14,
   "searches": [
     "entry level IT support",
@@ -19,64 +19,29 @@
   ],
   "top_skills": [
     {
-      "skill": "Microsoft 365",
-      "postings": 3,
-      "percent": 25
-    },
-    {
-      "skill": "Windows",
-      "postings": 3,
-      "percent": 25
+      "skill": "Hardware troubleshooting",
+      "postings": 6,
+      "percent": 67
     },
     {
       "skill": "Active Directory",
       "postings": 2,
-      "percent": 17
+      "percent": 22
     },
     {
-      "skill": "Access control",
+      "skill": "Microsoft 365",
       "postings": 1,
-      "percent": 8
+      "percent": 11
     },
     {
-      "skill": "CompTIA A+",
+      "skill": "Ticketing systems",
       "postings": 1,
-      "percent": 8
+      "percent": 11
     },
     {
-      "skill": "CompTIA Network+",
+      "skill": "Windows",
       "postings": 1,
-      "percent": 8
-    },
-    {
-      "skill": "Endpoint management",
-      "postings": 1,
-      "percent": 8
-    },
-    {
-      "skill": "Ethernet",
-      "postings": 1,
-      "percent": 8
-    },
-    {
-      "skill": "Excel",
-      "postings": 1,
-      "percent": 8
-    },
-    {
-      "skill": "Five9",
-      "postings": 1,
-      "percent": 8
-    },
-    {
-      "skill": "Intune",
-      "postings": 1,
-      "percent": 8
-    },
-    {
-      "skill": "LAN",
-      "postings": 1,
-      "percent": 8
+      "percent": 11
     }
   ]
 }

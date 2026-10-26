@@ -1,8 +1,8 @@
 {
-  "updated": "2026-10-19",
+  "updated": "2026-10-26",
   "location": "Dallas–Fort Worth",
-  "postings_analyzed": 9,
-  "postings_fetched": 41,
+  "postings_analyzed": 4,
+  "postings_fetched": 43,
   "window_days": 14,
   "searches": [
     "entry level IT support",
@@ -19,29 +19,54 @@
   ],
   "top_skills": [
     {
-      "skill": "Hardware troubleshooting",
-      "postings": 6,
-      "percent": 67
-    },
-    {
       "skill": "Active Directory",
       "postings": 2,
-      "percent": 22
+      "percent": 50
+    },
+    {
+      "skill": "Desktop Support",
+      "postings": 1,
+      "percent": 25
+    },
+    {
+      "skill": "Exchange",
+      "postings": 1,
+      "percent": 25
+    },
+    {
+      "skill": "Group Management",
+      "postings": 1,
+      "percent": 25
+    },
+    {
+      "skill": "ITSM",
+      "postings": 1,
+      "percent": 25
     },
     {
       "skill": "Microsoft 365",
       "postings": 1,
-      "percent": 11
+      "percent": 25
     },
     {
       "skill": "Ticketing systems",
       "postings": 1,
-      "percent": 11
+      "percent": 25
     },
     {
       "skill": "Windows",
       "postings": 1,
-      "percent": 11
+      "percent": 25
+    },
+    {
+      "skill": "Windows 10",
+      "postings": 1,
+      "percent": 25
+    },
+    {
+      "skill": "Windows 11",
+      "postings": 1,
+      "percent": 25
     }
   ]
 }

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="560" height="224" viewBox="0 0 560 224" role="img" aria-label="Skills DFW entry-level IT employers are asking for">
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="354" viewBox="0 0 560 354" role="img" aria-label="Skills DFW entry-level IT employers are asking for">
 <style>
 .bg{fill:#ffffff}.t{fill:#17191c;font:600 15px -apple-system,Segoe UI,Helvetica,Arial,sans-serif}
 .s{fill:#5d636e;font:12px -apple-system,Segoe UI,Helvetica,Arial,sans-serif}
@@ -6,27 +6,47 @@
 .bar{fill:#3b6fd4}.track{fill:#edf0f4}
 @media (prefers-color-scheme: dark){.bg{fill:#0d1117}.t,.l{fill:#e6edf3}.s{fill:#8b949e}.track{fill:#21262d}.bar{fill:#6f9bff}}
 </style>
-<rect class="bg" width="560" height="224" rx="8"/>
+<rect class="bg" width="560" height="354" rx="8"/>
 <text class="t" x="16" y="26">Skills DFW entry-level IT employers are asking for</text>
-<text class="s" x="16" y="46">9 relevant postings from the last 14 days · updated 2026-10-19</text>
-<text class="l" x="16" y="77">Hardware troubleshooting</text>
+<text class="s" x="16" y="46">4 relevant postings from the last 14 days · updated 2026-10-26</text>
+<text class="l" x="16" y="77">Active Directory</text>
 <rect class="track" x="190" y="66" width="250" height="14" rx="3"/>
-<rect class="bar" x="190" y="66" width="168" height="14" rx="3"/>
-<text class="s" x="450" y="77">67%</text>
-<text class="l" x="16" y="103">Active Directory</text>
+<rect class="bar" x="190" y="66" width="125" height="14" rx="3"/>
+<text class="s" x="450" y="77">50%</text>
+<text class="l" x="16" y="103">Desktop Support</text>
 <rect class="track" x="190" y="92" width="250" height="14" rx="3"/>
-<rect class="bar" x="190" y="92" width="55" height="14" rx="3"/>
-<text class="s" x="450" y="103">22%</text>
-<text class="l" x="16" y="129">Microsoft 365</text>
+<rect class="bar" x="190" y="92" width="62" height="14" rx="3"/>
+<text class="s" x="450" y="103">25%</text>
+<text class="l" x="16" y="129">Exchange</text>
 <rect class="track" x="190" y="118" width="250" height="14" rx="3"/>
-<rect class="bar" x="190" y="118" width="28" height="14" rx="3"/>
-<text class="s" x="450" y="129">11%</text>
-<text class="l" x="16" y="155">Ticketing systems</text>
+<rect class="bar" x="190" y="118" width="62" height="14" rx="3"/>
+<text class="s" x="450" y="129">25%</text>
+<text class="l" x="16" y="155">Group Management</text>
 <rect class="track" x="190" y="144" width="250" height="14" rx="3"/>
-<rect class="bar" x="190" y="144" width="28" height="14" rx="3"/>
-<text class="s" x="450" y="155">11%</text>
-<text class="l" x="16" y="181">Windows</text>
+<rect class="bar" x="190" y="144" width="62" height="14" rx="3"/>
+<text class="s" x="450" y="155">25%</text>
+<text class="l" x="16" y="181">ITSM</text>
 <rect class="track" x="190" y="170" width="250" height="14" rx="3"/>
-<rect class="bar" x="190" y="170" width="28" height="14" rx="3"/>
-<text class="s" x="450" y="181">11%</text>
+<rect class="bar" x="190" y="170" width="62" height="14" rx="3"/>
+<text class="s" x="450" y="181">25%</text>
+<text class="l" x="16" y="207">Microsoft 365</text>
+<rect class="track" x="190" y="196" width="250" height="14" rx="3"/>
+<rect class="bar" x="190" y="196" width="62" height="14" rx="3"/>
+<text class="s" x="450" y="207">25%</text>
+<text class="l" x="16" y="233">Ticketing systems</text>
+<rect class="track" x="190" y="222" width="250" height="14" rx="3"/>
+<rect class="bar" x="190" y="222" width="62" height="14" rx="3"/>
+<text class="s" x="450" y="233">25%</text>
+<text class="l" x="16" y="259">Windows</text>
+<rect class="track" x="190" y="248" width="250" height="14" rx="3"/>
+<rect class="bar" x="190" y="248" width="62" height="14" rx="3"/>
+<text class="s" x="450" y="259">25%</text>
+<text class="l" x="16" y="285">Windows 10</text>
+<rect class="track" x="190" y="274" width="250" height="14" rx="3"/>
+<rect class="bar" x="190" y="274" width="62" height="14" rx="3"/>
+<text class="s" x="450" y="285">25%</text>
+<text class="l" x="16" y="311">Windows 11</text>
+<rect class="track" x="190" y="300" width="250" height="14" rx="3"/>
+<rect class="bar" x="190" y="300" width="62" height="14" rx="3"/>
+<text class="s" x="450" y="311">25%</text>
 </svg>

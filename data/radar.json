@@ -1,7 +1,7 @@
 {
-  "updated": "2026-11-02",
+  "updated": "2026-11-09",
   "location": "Dallas–Fort Worth",
-  "postings_analyzed": 11,
+  "postings_analyzed": 20,
   "postings_fetched": 47,
   "window_days": 14,
   "searches": [
@@ -19,34 +19,64 @@
   ],
   "top_skills": [
     {
-      "skill": "Microsoft 365",
-      "postings": 4,
-      "percent": 36
+      "skill": "Hardware troubleshooting",
+      "postings": 8,
+      "percent": 40
     },
     {
-      "skill": "Windows",
+      "skill": "Microsoft 365",
       "postings": 4,
-      "percent": 36
+      "percent": 20
+    },
+    {
+      "skill": "Point-of-sale systems",
+      "postings": 4,
+      "percent": 20
     },
     {
       "skill": "Active Directory",
       "postings": 3,
-      "percent": 27
+      "percent": 15
     },
     {
-      "skill": "Ticketing systems",
+      "skill": "Software troubleshooting",
       "postings": 3,
-      "percent": 27
+      "percent": 15
     },
     {
-      "skill": "Hardware troubleshooting",
-      "postings": 1,
-      "percent": 9
+      "skill": "Windows",
+      "postings": 3,
+      "percent": 15
     },
     {
-      "skill": "VPN",
+      "skill": "Network equipment",
+      "postings": 2,
+      "percent": 10
+    },
+    {
+      "skill": "Routers",
+      "postings": 2,
+      "percent": 10
+    },
+    {
+      "skill": "Switches",
+      "postings": 2,
+      "percent": 10
+    },
+    {
+      "skill": "Wi-Fi access points",
+      "postings": 2,
+      "percent": 10
+    },
+    {
+      "skill": "Computer imaging",
       "postings": 1,
-      "percent": 9
+      "percent": 5
+    },
+    {
+      "skill": "Desktop support",
+      "postings": 1,
+      "percent": 5
     }
   ]
 }

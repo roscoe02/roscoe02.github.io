@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="560" height="250" viewBox="0 0 560 250" role="img" aria-label="Skills DFW entry-level IT employers are asking for">
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="406" viewBox="0 0 560 406" role="img" aria-label="Skills DFW entry-level IT employers are asking for">
 <style>
 .bg{fill:#ffffff}.t{fill:#17191c;font:600 15px -apple-system,Segoe UI,Helvetica,Arial,sans-serif}
 .s{fill:#5d636e;font:12px -apple-system,Segoe UI,Helvetica,Arial,sans-serif}
@@ -6,31 +6,55 @@
 .bar{fill:#3b6fd4}.track{fill:#edf0f4}
 @media (prefers-color-scheme: dark){.bg{fill:#0d1117}.t,.l{fill:#e6edf3}.s{fill:#8b949e}.track{fill:#21262d}.bar{fill:#6f9bff}}
 </style>
-<rect class="bg" width="560" height="250" rx="8"/>
+<rect class="bg" width="560" height="406" rx="8"/>
 <text class="t" x="16" y="26">Skills DFW entry-level IT employers are asking for</text>
-<text class="s" x="16" y="46">11 relevant postings from the last 14 days · updated 2026-11-02</text>
-<text class="l" x="16" y="77">Microsoft 365</text>
+<text class="s" x="16" y="46">20 relevant postings from the last 14 days · updated 2026-11-09</text>
+<text class="l" x="16" y="77">Hardware troubleshooting</text>
 <rect class="track" x="190" y="66" width="250" height="14" rx="3"/>
-<rect class="bar" x="190" y="66" width="90" height="14" rx="3"/>
-<text class="s" x="450" y="77">36%</text>
-<text class="l" x="16" y="103">Windows</text>
+<rect class="bar" x="190" y="66" width="100" height="14" rx="3"/>
+<text class="s" x="450" y="77">40%</text>
+<text class="l" x="16" y="103">Microsoft 365</text>
 <rect class="track" x="190" y="92" width="250" height="14" rx="3"/>
-<rect class="bar" x="190" y="92" width="90" height="14" rx="3"/>
-<text class="s" x="450" y="103">36%</text>
-<text class="l" x="16" y="129">Active Directory</text>
+<rect class="bar" x="190" y="92" width="50" height="14" rx="3"/>
+<text class="s" x="450" y="103">20%</text>
+<text class="l" x="16" y="129">Point-of-sale systems</text>
 <rect class="track" x="190" y="118" width="250" height="14" rx="3"/>
-<rect class="bar" x="190" y="118" width="68" height="14" rx="3"/>
-<text class="s" x="450" y="129">27%</text>
-<text class="l" x="16" y="155">Ticketing systems</text>
+<rect class="bar" x="190" y="118" width="50" height="14" rx="3"/>
+<text class="s" x="450" y="129">20%</text>
+<text class="l" x="16" y="155">Active Directory</text>
 <rect class="track" x="190" y="144" width="250" height="14" rx="3"/>
-<rect class="bar" x="190" y="144" width="68" height="14" rx="3"/>
-<text class="s" x="450" y="155">27%</text>
-<text class="l" x="16" y="181">Hardware troubleshooting</text>
+<rect class="bar" x="190" y="144" width="38" height="14" rx="3"/>
+<text class="s" x="450" y="155">15%</text>
+<text class="l" x="16" y="181">Software troubleshooting</text>
 <rect class="track" x="190" y="170" width="250" height="14" rx="3"/>
-<rect class="bar" x="190" y="170" width="22" height="14" rx="3"/>
-<text class="s" x="450" y="181">9%</text>
-<text class="l" x="16" y="207">VPN</text>
+<rect class="bar" x="190" y="170" width="38" height="14" rx="3"/>
+<text class="s" x="450" y="181">15%</text>
+<text class="l" x="16" y="207">Windows</text>
 <rect class="track" x="190" y="196" width="250" height="14" rx="3"/>
-<rect class="bar" x="190" y="196" width="22" height="14" rx="3"/>
-<text class="s" x="450" y="207">9%</text>
+<rect class="bar" x="190" y="196" width="38" height="14" rx="3"/>
+<text class="s" x="450" y="207">15%</text>
+<text class="l" x="16" y="233">Network equipment</text>
+<rect class="track" x="190" y="222" width="250" height="14" rx="3"/>
+<rect class="bar" x="190" y="222" width="25" height="14" rx="3"/>
+<text class="s" x="450" y="233">10%</text>
+<text class="l" x="16" y="259">Routers</text>
+<rect class="track" x="190" y="248" width="250" height="14" rx="3"/>
+<rect class="bar" x="190" y="248" width="25" height="14" rx="3"/>
+<text class="s" x="450" y="259">10%</text>
+<text class="l" x="16" y="285">Switches</text>
+<rect class="track" x="190" y="274" width="250" height="14" rx="3"/>
+<rect class="bar" x="190" y="274" width="25" height="14" rx="3"/>
+<text class="s" x="450" y="285">10%</text>
+<text class="l" x="16" y="311">Wi-Fi access points</text>
+<rect class="track" x="190" y="300" width="250" height="14" rx="3"/>
+<rect class="bar" x="190" y="300" width="25" height="14" rx="3"/>
+<text class="s" x="450" y="311">10%</text>
+<text class="l" x="16" y="337">Computer imaging</text>
+<rect class="track" x="190" y="326" width="250" height="14" rx="3"/>
+<rect class="bar" x="190" y="326" width="12" height="14" rx="3"/>
+<text class="s" x="450" y="337">5%</text>
+<text class="l" x="16" y="363">Desktop support</text>
+<rect class="track" x="190" y="352" width="250" height="14" rx="3"/>
+<rect class="bar" x="190" y="352" width="12" height="14" rx="3"/>
+<text class="s" x="450" y="363">5%</text>
 </svg>

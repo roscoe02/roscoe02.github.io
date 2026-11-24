@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-16",
+  "updated": "2026-11-24",
   "location": "Dallas–Fort Worth",
-  "postings_analyzed": 8,
-  "postings_fetched": 51,
+  "postings_analyzed": 11,
+  "postings_fetched": 52,
   "window_days": 14,
   "searches": [
     "entry level IT support",
@@ -19,49 +19,59 @@
   ],
   "top_skills": [
     {
-      "skill": "Hardware troubleshooting",
+      "skill": "Ticketing systems",
+      "postings": 4,
+      "percent": 36
+    },
+    {
+      "skill": "Active Directory",
       "postings": 2,
-      "percent": 25
+      "percent": 18
     },
     {
       "skill": "Microsoft 365",
       "postings": 2,
-      "percent": 25
+      "percent": 18
     },
     {
-      "skill": "Ticketing systems",
+      "skill": "Network cabling",
       "postings": 2,
-      "percent": 25
+      "percent": 18
+    },
+    {
+      "skill": "POS systems",
+      "postings": 2,
+      "percent": 18
     },
     {
       "skill": "Windows",
       "postings": 2,
-      "percent": 25
+      "percent": 18
     },
     {
-      "skill": "Active Directory",
+      "skill": "Access control systems",
       "postings": 1,
-      "percent": 12
+      "percent": 9
     },
     {
-      "skill": "CompTIA A+",
+      "skill": "CCTV",
       "postings": 1,
-      "percent": 12
+      "percent": 9
     },
     {
-      "skill": "Entra",
+      "skill": "Network devices",
       "postings": 1,
-      "percent": 12
+      "percent": 9
     },
     {
-      "skill": "Intune",
+      "skill": "TCP/IP",
       "postings": 1,
-      "percent": 12
+      "percent": 9
     },
     {
-      "skill": "Microsoft Azure",
+      "skill": "Voice systems",
       "postings": 1,
-      "percent": 12
+      "percent": 9
     }
   ]
 }
